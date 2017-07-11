@@ -9,6 +9,10 @@ app.config.from_object(settings)
 def index():
     return "EnerMod"
 
+@app.route('/enermod/login')
+def login():
+	return app.send_static_file('login.html')
+
 if __name__ == "__main__":
     try:
         app.run(host=settings.SERVER_HOST, port=settings.SERVER_PORT)
