@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script src="https://use.fontawesome.com/bb75f81a3d.js"></script>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+	<div class="container" id="grad1">
+
+		<header>
+			<div id="logo-data">
+				<a href="#">
+					<img class="logo" src="./images/logo.png">
+				</a>
+			</div>
+		</header>
+
+
+
+
+
+		<div class="tab">
+
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#select" class="fa fa-columns" aria-hidden="true">
+					<p class="tab-head"><b>Select</b></p></a></li>
+					<li><a data-toggle="tab" href="#edit" class="fa fa-table" aria-hidden="true">
+					<p class="tab-head"><b>Edit</b></p></a></li>
+					<li><a data-toggle="tab" href="#insert" class="fa fa-cloud-upload" aria-hidden="true"> <p class="tab-head"><b>Insert</b></p></a></li>
+
+				</ul>
+
+				<div class="tab-content">
+					<div id="select" class="tab-pane fade in active">
+						<div class="tab-header">
+Version & Column Selector
+						</div>
+						<div class="tabContent">
+
+							<form>
+
+								<div class="form-group1">
+									<label for="exampleInputEmail1">Get the Data</label>
+
+								</div>
+								<div class="form-group1">
+									<label for="exampleSelect1">Select the Version:</label>
+									<select class="form-control" id="exampleSelect1">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</div>
+								<div class="form-group1">
+									<label for="exampleSelect1">Select the Sub-Model:</label>
+									<select class="form-control" id="exampleSelect1">
+										<option>Power</option>
+										<option>Fuel</option>
+										<option>Water</option>
+										<option>Power-Sub</option>
+
+									</select>
+								</div>
+								<div class="form-group1">
+									<label for="exampleSelect1">Select the Function:</label>
+									<select class="form-control" id="exampleSelect1">
+										<option>FuelAllocated</option>
+										<option>FuelAllocatedTrend</option>
+									</select>
+								</div>
+								<div class="form-group1">
+									<label for="exampleSelect2">Select the columns to edit:</label>
+									<select multiple class="form-control" id="exampleSelect2">
+										<option>Year</option>
+										<option>Region</option>
+										<option>Fuel Type</option>
+										<option>Season</option>
+										<option>Country</option>
+										<option>Value</option>
+									</select>
+								</div>
+
+							</form>
+						</div>
+
+
+
+
+					</div>
+					<div id="edit" class="tab-pane fade">
+						<div class="tab-header">
+Edit the table
+						</div>
+						<div class="tabContent">
+							
+         
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th>ID</th>
+        <th>Year</th>
+        <th>Fuel Type</th>
+        <th>Season</th>
+<th>value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td>1</td>
+        <td>t1</td>
+        <td>Arab Light</td>
+        <td>Winter</td>
+        <td>10.5</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>2</td>
+        <td>t2</td>
+        <td>HFO</td>
+        <td>Summer</td>
+        <td>25</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>3</td>
+        <td>t3</td>
+        <td>Nuclear</td>
+        <td>Winter</td>
+        <td>222</td>
+      </tr>
+     
+    </tbody>
+  </table>
+
+						</div>
+					</div>
+					<div id="insert" class="tab-pane fade">
+						<div class="tab-header">
+Insert the edits
+						</div>
+						<div class="tabContent">
+							
+							<p>Fixed the version as production</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+<ul class="pager">
+  <li class="btn"><a href="#" class="btn">Previous</a></li>
+  <li class="btn"><a href="#">Next</a></li>
+</ul>
+		</div>
+
+
+
+		
+
+
+
+
+
+
+
+
+	</body>
+	</html>
