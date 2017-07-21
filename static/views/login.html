@@ -5,28 +5,34 @@
 	<meta name="viewport" content="width=device-width">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+	<link rel="stylesheet" href="https://cdn.bootcss.com/semantic-ui/2.2.11/components/button.css" >
+	<link rel="stylesheet" href="https://cdn.bootcss.com/semantic-ui/2.2.11/components/icon.css" >
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<script src="https://use.fontawesome.com/bb75f81a3d.js"></script>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<title>EnerMod | Login</title>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+  	<link rel="icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 	<div class="container">
-	<div class="col-xs-12 col-sm-5 col-md-7">
-		<header>
-			<div id="logo">
-				<a href="#">
-					<img class="logo" src="./images/logo.png">
-				</a>
-			</div>
-		</header>
-<section id="content">
-						<form>
+		<div class="row">
+			<div class="col-md-7">
+				
+				<section id="content">
+					<header>
+					<div id="logo">
+						<a href="#">
+							<img class="logo" src="../images/logo.png">
+						</a>
+					</div>
+					</header>
+					<form>
 							<div class="form-group"> 
 								<div class="input-group input-group-lg">
 									<span class="input-group-addon">
@@ -41,28 +47,40 @@
 										<span class="fa fa-lock" aria-hidden="true"></span>
 									</span>
 									<input class="form-control" type="password" placeholder="Password">
-								</div> 
+								</div>  
 							</div>
-
-							<div class="form-group"> 
-
-								<button type="submit" class="login">Login</button>
+							<div class="form-group">
 								<a href="#" class="forgotPass">Forgot Password?</a>
 							</div>
-						</form>
+							<div class="form-group"> 
+								<button type="submit" class="btn" id="login">
+									<i class="sign in icon"></i>Login
+								</button>
+							</div>
+							<div class="form-group"> 
+								<div class="row">						
+									<div class="col-xs-5 line"></div>
+									<div class="col-xs-2 or">
+										<h4>OR</h4>
+									</div>
+									<div class="col-xs-5 line1"></div>
+								</div>
+							</div>
+							<div class="form-group"> 
+								<button class="btn outlook">Outlook Web App</button>
+							</div>
+					</form>
 
-						</section>
-					</div>
-<div class="col-md-5 pattern">
-<img src="./images/pattern.jpeg" class="pattern">
-
-
-</div>
-
-				</div>
-			
-	
+				</section>
+			</div>
+			<div class="col-md-5">
+				<img src="../images/pattern.jpeg" class="pattern" >
+				<span class="title">EnerMod </br>Databrowser</span>
+				
+			</div>
+		</div>
 		
-	
+
+	</div>
 </body>
 </html>
