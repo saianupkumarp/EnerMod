@@ -8,10 +8,10 @@ body{
 }
 /* Global */
 .container{
-width:100%;
+  width:100%;
 	height:800px;
 	overflow: hidden;
-	background-color: #fff;
+	background-color: #F8F8F8;
 	padding: 0;
 
 }
@@ -32,12 +32,12 @@ a:hover{
 	margin:10%;
 	height:470px;
 
-	
+
 }
 .nav-tabs li{
 text-align: center;
 	width:33.33%;
-	
+
 
 }
 .tab-header{
@@ -47,9 +47,9 @@ text-align: center;
 	padding: 5px 15px;
 }
 .tabContent{
-	
+
 	padding:10px;
-	
+
 }
 
 .tab-head{
@@ -87,9 +87,7 @@ font-size: 18px;
 font-family: Arial,sans-serif;
 
 }
-a{
-	background:#fff;
-}
+
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
     color: #fff;
 
@@ -108,19 +106,19 @@ a{
     width:40%;
 	margin:0 30%;
 	padding-bottom: 10px;
-}	
+}
 .input-group-lg>.form-control,.input-group-lg>.input-group-addon{
-border-radius: 0px; 
+border-radius: 0px;
 }
 .btn{
-   border-radius: 0px;  
+   border-radius: 0px;
    width:140px;
    font-size: 15px;
    padding: 10px 15px;
    background-color: #48AC62;
    color: white;
    margin: 0px;
-   box-shadow: 0.1px 0.1px 5px #B8B8B8;  
+   box-shadow: 0.1px 0.1px 5px #B8B8B8;
 }
 .btn:hover{
 	opacity: 0.9;
@@ -130,14 +128,14 @@ border-radius: 0px;
 
 .forgotPass{
 	text-decoration: none;
-	color:#3c3d3b; 
+	color:#3c3d3b;
 	font-size:14px;
 	/* margin:10px; */
 }
 .forgotPass:hover{
 	/* text-decoration: none; */
 	color:#6a6a6a;
-	
+
 }
 .line{
 
@@ -152,7 +150,7 @@ margin-top: 20px;}
 .outlook{
 	width:180px;
 	height:40px;
-	 text-align: center; 
+	 text-align: center;
 	background-color: #2272b9;
 	color: #FFFFFF;
 	/* margin: 0 25%; */
@@ -167,7 +165,7 @@ margin-top: 20px;}
     width: 22px;
     height: 20px;
     content: "";
-    background-image:url('../images/outlook.ico'); 
+    background-image:url('../images/outlook.ico');
 }
 .bg_image{
 background-color:#6a6a6a;
@@ -176,12 +174,15 @@ background-color:#6a6a6a;
 }
 
 #grad1 {
-    
-    background: #dbdbdb; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#ffffff, #BDBDBD); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#ffffff, #BDBDBD); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#ffffff, #BDBDBD); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#ffffff, #BDBDBD); /* Standard syntax (must be last) */
+
+    /*background: #dbdbdb; /* For browsers that do not support gradients */
+    /*background: -webkit-linear-gradient(#ffffff, #BDBDBD); /* For Safari 5.1 to 6.0 */
+    /*background: -o-linear-gradient(#ffffff, #BDBDBD); /* For Opera 11.1 to 12.0 */
+    /*background: -moz-linear-gradient(#ffffff, #BDBDBD); /* For Firefox 3.6 to 15 */
+    /*background: linear-gradient(#ffffff, #BDBDBD); /* Standard syntax (must be last) */
+		background-image:url('../images/bg.png');
+		background-repeat: no-repeat;
+		background-size: 100%;
 }
 
 .pager li a{
@@ -206,20 +207,20 @@ padding: 10px 15px;
    cursor: pointer;
    margin-right: 15px;
 }
-.title { 
-   position: absolute; 
-   top: 379px; 
-   left: 27px;  
+.title {
+   position: absolute;
+   top: 270px;
+   left: 65px;
    /* width: 100%;  */
-   color: #000; 
-   font: 48px/46px Helvetica, Sans-Serif; 
+   color: #000;
+   font: 48px/46px Helvetica, Sans-Serif;
    /* letter-spacing: -1px;   */
    /* background: rgba(0, 0, 0, 0.7); */
    /* padding: 10px;  */
 }
 .pattern{
-   position: relative; 
-   width: 100%;
+   position: relative;
+   /*width: 100%;*/
    height:800px;
    box-shadow: 1px 1px 15px #888888;
 }
@@ -250,4 +251,3 @@ padding: 10px 15px;
     	width:70%;
     }
 }
-
