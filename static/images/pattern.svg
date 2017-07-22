@@ -15,27 +15,27 @@
 	 style="enable-background:new 0 0 836.9 768;" xml:space="preserve">
 <style type="text/css">
 	.group1 {
-      animation: colorchange 15s; /* animation-name followed by duration in seconds*/
-         /* you could also use milliseconds (ms) or something like 2.5s */
-      -webkit-animation: colorchange 15s; /* Chrome and Safari */
+      animation: colorchange 10s; /* animation-name followed by duration in seconds*/
+      -webkit-animation: colorchange 10s; /* Chrome and Safari */
     }
     @keyframes colorchange
     {
       0%  {fill: #858585;}
-		  20%  {fill: #63A55D;}
+	  20%  {fill: #63A55D;}
+	  80%  {fill: #63A55D;}
       100% {fill: #858585;}
     }
-		.group2 {
-	      animation: colorchange2 15s; /* animation-name followed by duration in seconds*/
-	         /* you could also use milliseconds (ms) or something like 2.5s */
-	      -webkit-animation: colorchange2 15s; /* Chrome and Safari */
-	   }
-	   @keyframes colorchange2
-	   {
-	      20%  {fill: #858585;}
-			  40%  {fill: #FED030;}
-	      100% {fill: #858585;}
-	   }
+	.group2 {
+	    animation: colorchange2 10s; /* animation-name followed by duration in seconds*/
+	    -webkit-animation: colorchange2 10s; /* Chrome and Safari */
+	}
+	@keyframes colorchange2
+	{
+	  20%  {fill: #858585;}
+	  40%  {fill: #FED030;}
+	  80%  {fill: #FED030;}
+	  100% {fill: #858585;}
+	}
 	.st0{fill:#D7D7D7;}
 	.st1{fill:#FFFFFF;}
 	.st2{fill:#FEFEFE;}
