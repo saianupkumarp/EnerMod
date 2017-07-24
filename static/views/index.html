@@ -6,169 +6,241 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- <link rel="stylesheet" href="https://cdn.bootcss.com/semantic-ui/2.2.11/components/button.css" >
+	<link rel="stylesheet" href="https://cdn.bootcss.com/semantic-ui/2.2.11/components/icon.css" >-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/components/transition.css" >
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/components/transition.js"></script> 
 
-	<script src="https://use.fontawesome.com/bb75f81a3d.js"></script>
-	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.css">
+    <script src="https://cdn.bootcss.com/semantic-ui/2.2.11/semantic.js"></script> 
+<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/semantic-ui/2.2.11/components/menu.css">
+    <script src="https://cdn.bootcss.com/semantic-ui/2.2.11/semantic.js"></script> 
+<script>
+$(document).ready(function() {
+  $('.ui.dropdown').dropdown({
+    onChange: function (value, text, $selectedItem) {
+      console.log(value);
+    },
+    forceSelection: false,
+    selectOnKeydown: false,
+    showOnFocus: false,
+    on: "click"
+  });
+
+});
+</script>
+	<title>EnerMod | Index</title>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+  	<link rel="icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-	<div class="container" id="grad1">
-
-		<header>
-		<div id="logo">
-			<a href="#">
-				<img class="logo" src="../images/logo.png">
-			</a>
-		</div>
-		</header>
-
+	<header>
+			<div id="logo">
+				<a href="#">
+					<img class="headerLogo" src="../images/logo.png">
+				</a>
+			</div>
+			<div class="headerAccount">
+				<span class="username"><i class="user icon"></i>Anup Kumar</span>
+				<div class="ui buttons">
+							<div class="ui floating dropdown icon button dropdownMenu">
+								<i class="chevron circle down icon"></i>
+								<div class="menu">
+									<div class="item">Choice 1</div>
+									<div class="item">Choice 2</div>
+									<div class="item">Choice 3</div>
+								</div>
+							</div>
+				</div>
+			</div>
+	</header>
+	<div class="container" id="bg">
 		<div class="tab">
 
 			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#select" class="fa fa-columns" aria-hidden="true">
-					<p class="tab-head"><b>Select</b></p></a></li>
+					<li class="active"><a data-toggle="tab" href="#select" class="fa fa-columns" aria-hidden="true">
+						<p class="tab-head"><i class="add circle icon"></i>Select</p></a>
+					</li>
 					<li><a data-toggle="tab" href="#edit" class="fa fa-table" aria-hidden="true">
-					<p class="tab-head"><b>Edit</b></p></a></li>
-					<li><a data-toggle="tab" href="#insert" class="fa fa-cloud-upload" aria-hidden="true"> <p class="tab-head"><b>Insert</b></p></a></li>
+						<p class="tab-head"><i class="edit icon"></i>Edit</p></a>
+					</li>
+					<li><a data-toggle="tab" href="#insert" class="fa fa-cloud-upload" aria-hidden="true">
+						 <p class="tab-head"><i class="cloud upload icon"></i>Insert</p></a>
+					</li>
 
 				</ul>
 
 				<div class="tab-content">
 					<div id="select" class="tab-pane fade in active">
 						<div class="tab-header">
-Version & Column Selector
+							<i class="file text outline icon"></i>Version & Column Selector
 						</div>
 						<div class="tabContent">
-
 							<form>
+								<div class="form-group1">
+									<div class="row">
+										<div class="col-md-4">
+											<label for="exampleInputEmail1">Data:</label>
+										</div>
+										<div class="col-md-8">
+											<div class="ui toggle checkbox toggle2">
+												<input type="checkbox" name="data">
+												<label>Get Data</label>
+											</div>
+										</div>
+									</div>
 
-								<div class="form-group1">
-									<label for="exampleInputEmail1">Get the Data</label>
-
 								</div>
 								<div class="form-group1">
-									<label for="exampleSelect1">Select the Version:</label>
-									<select class="form-control" id="exampleSelect1">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-									</select>
+									<div class="row">
+										<div class="col-md-4">
+											<label for="exampleSelect1">Version:</label>
+										</div>
+										<div class="col-md-8">
+											<select class="ui dropdown" id="selectVersion">
+												<option value="">Select Version</option>
+												<option value="5">5</option>
+												<option value="4">4</option>
+												<option value="3">3</option>
+												<option value="2">2</option>
+												<option value="1">1</option>
+											</select>
+										</div>
+									</div>
 								</div>
 								<div class="form-group1">
-									<label for="exampleSelect1">Select the Sub-Model:</label>
-									<select class="form-control" id="exampleSelect1">
-										<option>Power</option>
-										<option>Fuel</option>
-										<option>Water</option>
-										<option>Power-Sub</option>
-
-									</select>
+									<div class="row">
+										<div class="col-md-4">
+											<label for="exampleSelect1">Sub-Model:</label>
+										</div>
+										<div class="col-md-8">
+											<select class="ui dropdown" id="selectSubModel">
+												<option value="">Select Sub-Model</option>
+												<option value="Power">Power</option>
+												<option value="Fuel">Fuel</option>
+												<option value="Water">Water</option>
+												<option value="Power-Sub">Power-Sub</option>
+											</select>
+										</div>
+									</div>
 								</div>
 								<div class="form-group1">
-									<label for="exampleSelect1">Select the Function:</label>
-									<select class="form-control" id="exampleSelect1">
-										<option>FuelAllocated</option>
-										<option>FuelAllocatedTrend</option>
-									</select>
+									<div class="row">
+										<div class="col-md-4">
+											<label for="exampleSelect1">Function:</label>
+										</div>
+										<div class="col-md-8">
+											<select class="ui dropdown" id="selectFunction">
+												<option value="">Select Function</option>
+												<option value="FuelAllocated">FuelAllocated</option>
+												<option value="FuelAllocatedTrend">FuelAllocatedTrend</option>
+											</select>
+										</div>
+									</div>
 								</div>
 								<div class="form-group1">
-									<label for="exampleSelect2">Select the columns to edit:</label>
-									<select multiple class="form-control" id="exampleSelect2">
-										<option>Year</option>
-										<option>Region</option>
-										<option>Fuel Type</option>
-										<option>Season</option>
-										<option>Country</option>
-										<option>Value</option>
-									</select>
+									<div class="row">
+										<div class="col-md-4">
+											<label for="exampleSelect2">Columns to Edit:</label>
+										</div>
+										<div class="col-md-8">
+											<select class="ui fluid search dropdown" id="selectColumn" multiple="">
+												<option value="">Select the columns to edit</option>
+												<option value="Year">Year</option>
+												<option value="Region">Region</option>
+												<option value="FuelType">Fuel Type</option>
+												<option value="Season">Season</option>
+												<option value="Country">Country</option>
+												<option value="Value">Value</option>
+											</select>
+										</div>
+									</div>
 								</div>
 
 							</form>
 						</div>
-
-
-
-
 					</div>
 					<div id="edit" class="tab-pane fade">
 						<div class="tab-header">
-Edit the table
+							<i class="file text outline icon"></i>Edit the table
 						</div>
 						<div class="tabContent">
 
+								<table class="table table-striped">
+									<thead>
+									<tr>
+										<th></th>
+										<th>ID</th>
+										<th>Year</th>
+										<th>Fuel Type</th>
+										<th>Season</th>
+								<th>value</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td></td>
+										<td>1</td>
+										<td>t1</td>
+										<td>Arab Light</td>
+										<td>Winter</td>
+										<td>10.5</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>2</td>
+										<td>t2</td>
+										<td>HFO</td>
+										<td>Summer</td>
+										<td>25</td>
+									</tr>
+									<tr>
+										<td></td>
+										<td>3</td>
+										<td>t3</td>
+										<td>Nuclear</td>
+										<td>Winter</td>
+										<td>222</td>
+									</tr>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th></th>
-        <th>ID</th>
-        <th>Year</th>
-        <th>Fuel Type</th>
-        <th>Season</th>
-<th>value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td></td>
-        <td>1</td>
-        <td>t1</td>
-        <td>Arab Light</td>
-        <td>Winter</td>
-        <td>10.5</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>2</td>
-        <td>t2</td>
-        <td>HFO</td>
-        <td>Summer</td>
-        <td>25</td>
-      </tr>
-      <tr>
-        <td></td>
-        <td>3</td>
-        <td>t3</td>
-        <td>Nuclear</td>
-        <td>Winter</td>
-        <td>222</td>
-      </tr>
-
-    </tbody>
-  </table>
+									</tbody>
+								</table>
 
 						</div>
 					</div>
 					<div id="insert" class="tab-pane fade">
 						<div class="tab-header">
-Insert the edits
+							<i class="file text outline icon"></i>Insert the edits
 						</div>
 						<div class="tabContent">
-
-							<p>Fixed the version as production</p>
+							<div class="form-group1">
+								<div class="ui toggle checkbox">
+									<input type="checkbox" name="public">
+									<label>Fix the version as production</label>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 
 			</div>
-<ul class="pager">
-  <li class="btn"><a href="#" class="btn">Previous</a></li>
-  <li class="btn"><a href="#">Next</a></li>
-</ul>
-		</div>
+		<ul class="pager">
+		<li><button type="submit" class="btn" id="previous">
+							<i class="chevron circle left icon"></i> Previous
+			</button>
+		</li>
+
+		<li><button type="submit" class="btn" id="next">
+							Next <i class="chevron circle right icon"></i>
+			</button>
+		</li>
+		</ul>
+	<!-- <i class="database icon"></i> Insert -->
+	</div>
 
 
-
-
-
-
-
-
-
-
-
-
-	</body>
-	</html>
+</body>
+</html>
