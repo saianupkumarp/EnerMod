@@ -43,13 +43,13 @@ $(document).ready(function() {
 	<header>
 			<div id="logo">
 				<a href="#">
-					<img class="headerLogo" src="../images/logo.png">
+					<img class="header-logo" src="../images/logo.png">
 				</a>
 			</div>
-			<div class="headerAccount">
+			<div class="header-account">
 				<span class="username"><i class="user icon"></i>Anup Kumar</span>
 				<div class="ui buttons">
-							<div class="ui floating dropdown icon button dropdownMenu">
+							<div class="ui floating dropdown icon button user-dropdown-menu">
 								<i class="chevron circle down icon"></i>
 								<div class="menu">
 									<div class="item">Choice 1</div>
@@ -82,9 +82,9 @@ $(document).ready(function() {
 						<div class="tab-header">
 							<i class="file text outline icon"></i>Version & Column Selector
 						</div>
-						<div class="tabContent">
+						<div class="selected-tab-content">
 							<form>
-								<div class="form-group1">
+								<div class="form-group">
 									<div class="row">
 										<div class="col-md-4">
 											<label for="exampleInputEmail1">Data:</label>
@@ -98,7 +98,7 @@ $(document).ready(function() {
 									</div>
 
 								</div>
-								<div class="form-group1">
+								<div class="form-group">
 									<div class="row">
 										<div class="col-md-4">
 											<label for="exampleSelect1">Version:</label>
@@ -115,7 +115,7 @@ $(document).ready(function() {
 										</div>
 									</div>
 								</div>
-								<div class="form-group1">
+								<div class="form-group">
 									<div class="row">
 										<div class="col-md-4">
 											<label for="exampleSelect1">Sub-Model:</label>
@@ -131,7 +131,7 @@ $(document).ready(function() {
 										</div>
 									</div>
 								</div>
-								<div class="form-group1">
+								<div class="form-group">
 									<div class="row">
 										<div class="col-md-4">
 											<label for="exampleSelect1">Function:</label>
@@ -145,7 +145,7 @@ $(document).ready(function() {
 										</div>
 									</div>
 								</div>
-								<div class="form-group1">
+								<div class="form-group">
 									<div class="row">
 										<div class="col-md-4">
 											<label for="exampleSelect2">Columns to Edit:</label>
@@ -171,48 +171,8 @@ $(document).ready(function() {
 						<div class="tab-header">
 							<i class="file text outline icon"></i>Edit the table
 						</div>
-						<div class="tabContent">
-<!-- 
-								<table class="table table-striped">
-									<thead>
-									<tr>
-										<th></th>
-										<th>ID</th>
-										<th>Year</th>
-										<th>Fuel Type</th>
-										<th>Season</th>
-								<th>value</th>
-									</tr>
-									</thead>
-									<tbody>
-									<tr>
-										<td></td>
-										<td>1</td>
-										<td>t1</td>
-										<td>Arab Light</td>
-										<td>Winter</td>
-										<td>10.5</td>
-									</tr>
-									<tr>
-										<td></td>
-										<td>2</td>
-										<td>t2</td>
-										<td>HFO</td>
-										<td>Summer</td>
-										<td>25</td>
-									</tr>
-									<tr>
-										<td></td>
-										<td>3</td>
-										<td>t3</td>
-										<td>Nuclear</td>
-										<td>Winter</td>
-										<td>222</td>
-									</tr>
-
-									</tbody>
-								</table> -->
-								<p>Please Double-click on the cell to Edit "Value":</p>
+						<div class="selected-tab-content">
+								<p>Please Double-click on the cell to Edit Values:</p>
  								<div class="" id="handsontable"></div> 
 						</div>
 					</div>
@@ -220,8 +180,8 @@ $(document).ready(function() {
 						<div class="tab-header">
 							<i class="file text outline icon"></i>Insert the edits
 						</div>
-						<div class="tabContent">
-							<div class="form-group1">
+						<div class="selected-tab-content">
+							<div class="form-group">
 								<div class="ui toggle checkbox">
 									<input type="checkbox" name="public">
 									<label>Fix the version as production</label>
@@ -250,70 +210,70 @@ $(document).ready(function() {
 
 
 	<script>
-  var dataObject = [
-    {id: 1, year: 't1', fuelType: 'Arab Light', season: 'Winter', value: 10.5},
-    {id: 2, year: 't2', fuelType: 'HFO', season: 'Summer', value:25 },
-	{id: 3, year: 't3', fuelType: 'Nuclwar', season: 'Winter', value: 222}
-	 ];
+		var dataObject = [
+				{id: 1, year: 't1', fuelType: 'Arab Light', season: 'Winter', value: 10.5},
+				{id: 2, year: 't2', fuelType: 'HFO', season: 'Summer', value:25 },
+				{id: 3, year: 't3', fuelType: 'Nuclwar', season: 'Winter', value: 222}
+				];
 
-yellowRenderer = function(instance, td, row, col, prop, value, cellProperties) {
-    Handsontable.renderers.TextRenderer.apply(this, arguments);
-    td.style.backgroundColor = '#FCF3CF';
-};
-  var handsontableElement = document.querySelector('#handsontable');
-  var handsontableElementContainer = handsontableElement.parentNode;
-  var handsontableSettings = {
-    data: dataObject,
-    stretchH: 'all',
-    width: '100%',
-    autoWrapRow: true,
-    height: 321,
-    // maxRows: 22,
-    rowHeaders: true,
-    colHeaders: [
-        'ID',
-        'Year',
-        'Fuel Type',
-        'Season',
-        'Value'
-    ],
-    columns: [
-        {
-            data: 'id',
-            type: 'numeric',
-            width: 40,
-			editor: false
-        },
-        {
-            data: 'year',
-            type: 'text',
-			editor: false
-        },
-        {
-            data: 'fuelType',
-            type: 'text',
-			editor: false
+		yellowRenderer = function(instance, td, row, col, prop, value, cellProperties) {
+			Handsontable.renderers.TextRenderer.apply(this, arguments);
+			td.style.backgroundColor = '#FCF3CF';
+		};
+		var handsontableElement = document.querySelector('#handsontable');
+		var handsontableElementContainer = handsontableElement.parentNode;
+		var handsontableSettings = {
+					data: dataObject,
+					stretchH: 'all',
+					width: '100%',
+					autoWrapRow: true,
+					height: 321,
+					// maxRows: 22,
+					rowHeaders: true,
+					colHeaders: [
+							'ID',
+							'Year',
+							'Fuel Type',
+							'Season',
+							'Value'
+					],
+					columns: [
+							{
+								data: 'id',
+								type: 'numeric',
+								width: 40,
+								editor: false
+							},
+							{
+								data: 'year',
+								type: 'text',
+								editor: false
+							},
+							{
+								data: 'fuelType',
+								type: 'text',
+								editor: false
 
-        },
-        {
-            data: 'season',
-            type: 'text',
-			editor: false
-        },
-        {
-            data: 'value',
-            type: 'numeric',
-            format: '0.00',
-			renderer: yellowRenderer
-        }
-    ],
-	customBorders: [
-    {col: 3, left: {width: 2, color: 'red'},
-      right: {width: 1, color: 'green'}, top: '', bottom: ''}
-  ]
-};
+							},
+							{
+								data: 'season',
+								type: 'text',
+								editor: false
+							},
+							{
+								data: 'value',
+								type: 'numeric',
+								format: '0.00',
+								renderer: yellowRenderer
+							}
+					],
+			customBorders: [
+			{col: 3, left: {width: 2, color: 'red'},
+			right: {width: 1, color: 'green'}, top: '', bottom: ''}
+			]
+		};
 
-  var handsontable = new Handsontable(handsontableElement, handsontableSettings);
+		var handsontable = new Handsontable(handsontableElement, handsontableSettings);
 </script>
 </body>
 </html>

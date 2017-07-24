@@ -15,8 +15,8 @@
 	 style="enable-background:new 0 0 836.9 768;" xml:space="preserve">
 <style type="text/css">
 	.group1 {
-      animation: colorchange 10s; /* animation-name followed by duration in seconds*/
-      -webkit-animation: colorchange 10s; /* Chrome and Safari */
+      animation: colorchange 15s infinite; /* animation-name followed by duration in seconds*/
+      -webkit-animation: colorchange 15s infinite; /* Chrome and Safari */
     }
     @keyframes colorchange
     {
@@ -26,8 +26,8 @@
       100% {fill: #858585;}
     }
 	.group2 {
-	    animation: colorchange2 10s; /* animation-name followed by duration in seconds*/
-	    -webkit-animation: colorchange2 10s; /* Chrome and Safari */
+	    animation: colorchange2 15s infinite; /* animation-name followed by duration in seconds*/
+	    -webkit-animation: colorchange2 15s infinite;/* Chrome and Safari */
 	}
 	@keyframes colorchange2
 	{
