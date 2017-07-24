@@ -11,6 +11,9 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/components/transition.css" >
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/components/transition.js"></script> 
 
+<link rel="stylesheet" type="text/css" href="http://docs.handsontable.com/pro/bower_components/handsontable-pro/dist/handsontable.full.min.css">
+<script src="http://docs.handsontable.com/pro/bower_components/handsontable-pro/dist/handsontable.full.min.js"></script>
+ <!-- <link rel="stylesheet" type="text/css" href="http://handsontable.com/static/css/main.css">  -->
 
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.css">
     <script src="https://cdn.bootcss.com/semantic-ui/2.2.11/semantic.js"></script> 
@@ -168,7 +171,7 @@ $(document).ready(function() {
 							<i class="file text outline icon"></i>Edit the table
 						</div>
 						<div class="tabContent">
-
+<!-- 
 								<table class="table table-striped">
 									<thead>
 									<tr>
@@ -207,8 +210,9 @@ $(document).ready(function() {
 									</tr>
 
 									</tbody>
-								</table>
-
+								</table> -->
+								<p>Please Double-click on the cell to Edit "Value":</p>
+ 								<div class="" id="handsontable"></div> 
 						</div>
 					</div>
 					<div id="insert" class="tab-pane fade">
@@ -242,5 +246,72 @@ $(document).ready(function() {
 	</div>
 
 
+
+	<script>
+  var dataObject = [
+    {id: 1, year: 't1', fuelType: 'Arab Light', season: 'Winter', value: 10.5},
+    {id: 2, year: 't2', fuelType: 'HFO', season: 'Summer', value:25 },
+	{id: 3, year: 't3', fuelType: 'Nuclwar', season: 'Winter', value: 222}
+	 ];
+
+yellowRenderer = function(instance, td, row, col, prop, value, cellProperties) {
+    Handsontable.renderers.TextRenderer.apply(this, arguments);
+    td.style.backgroundColor = '#FCF3CF';
+};
+  var handsontableElement = document.querySelector('#handsontable');
+  var handsontableElementContainer = handsontableElement.parentNode;
+  var handsontableSettings = {
+    data: dataObject,
+    stretchH: 'all',
+    width: '100%',
+    autoWrapRow: true,
+    height: 321,
+    // maxRows: 22,
+    rowHeaders: true,
+    colHeaders: [
+        'ID',
+        'Year',
+        'Fuel Type',
+        'Season',
+        'Value'
+    ],
+    columns: [
+        {
+            data: 'id',
+            type: 'numeric',
+            width: 40,
+			editor: false
+        },
+        {
+            data: 'year',
+            type: 'text',
+			editor: false
+        },
+        {
+            data: 'fuelType',
+            type: 'text',
+			editor: false
+
+        },
+        {
+            data: 'season',
+            type: 'text',
+			editor: false
+        },
+        {
+            data: 'value',
+            type: 'numeric',
+            format: '0.00',
+			renderer: yellowRenderer
+        }
+    ],
+	customBorders: [
+    {col: 3, left: {width: 2, color: 'red'},
+      right: {width: 1, color: 'green'}, top: '', bottom: ''}
+  ]
+};
+
+  var handsontable = new Handsontable(handsontableElement, handsontableSettings);
+</script>
 </body>
 </html>
