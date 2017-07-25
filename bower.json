@@ -1,0 +1,9 @@
+{
+  "name": "enermod",
+  "homepage": "https://github.com/KAPSARC/EnerMod",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "semantic": "semantic-ui#^2.2.11",
+    "handsontable": "^0.33.0"
+  }
+}

@@ -3,40 +3,36 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<!-- <link rel="stylesheet" href="https://cdn.bootcss.com/semantic-ui/2.2.11/components/button.css" >
-	<link rel="stylesheet" href="https://cdn.bootcss.com/semantic-ui/2.2.11/components/icon.css" >-->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/components/transition.css" >
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/components/transition.js"></script> 
+    
+    <title>EnerMod | Index</title> 
+    
+    <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../vendor/handsontable/dist/handsontable.full.min.css">
+    <link rel="stylesheet" href="../vendor/semantic/dist/semantic.min.css" >
+    
+    <script src="../vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../vendor/handsontable/dist/handsontable.full.min.js"></script>
+    <script src="https://use.fontawesome.com/bb75f81a3d.js"></script>
+    
+    <script src="../vendor/semantic/dist/semantic.js"></script> 
+    <script>
+    $(document).ready(function() {
+      $('.ui.dropdown').dropdown({
+        onChange: function (value, text, $selectedItem) {
+          console.log(value);
+        },
+        forceSelection: false,
+        selectOnKeydown: false,
+        showOnFocus: false,
+        on: "click"
+      });
 
-<link rel="stylesheet" type="text/css" href="http://docs.handsontable.com/pro/bower_components/handsontable-pro/dist/handsontable.full.min.css">
-<script src="http://docs.handsontable.com/pro/bower_components/handsontable-pro/dist/handsontable.full.min.js"></script>
- <!-- <link rel="stylesheet" type="text/css" href="http://handsontable.com/static/css/main.css">  -->
-
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.css">
-    <script src="https://cdn.bootcss.com/semantic-ui/2.2.11/semantic.js"></script> 
-<link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/semantic-ui/2.2.11/components/menu.css">
-    <script src="https://cdn.bootcss.com/semantic-ui/2.2.11/semantic.js"></script> 
-<script>
-$(document).ready(function() {
-  $('.ui.dropdown').dropdown({
-    onChange: function (value, text, $selectedItem) {
-      console.log(value);
-    },
-    forceSelection: false,
-    selectOnKeydown: false,
-    showOnFocus: false,
-    on: "click"
-  });
-
-});
-</script>
-	<title>EnerMod | Index</title>
+    });
+    </script>
+    
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
-
-	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
   	<link rel="icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -65,13 +61,13 @@ $(document).ready(function() {
 		<div class="tab">
 
 			<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="#select" class="fa fa-columns" aria-hidden="true">
+					<li class="active"><a data-toggle="tab" href="#select" aria-hidden="true">
 						<p class="tab-head"><i class="add circle icon"></i>Select</p></a>
 					</li>
-					<li><a data-toggle="tab" href="#edit" class="fa fa-table" aria-hidden="true">
+					<li><a data-toggle="tab" href="#edit" aria-hidden="true">
 						<p class="tab-head"><i class="edit icon"></i>Edit</p></a>
 					</li>
-					<li><a data-toggle="tab" href="#insert" class="fa fa-cloud-upload" aria-hidden="true">
+					<li><a data-toggle="tab" href="#insert" aria-hidden="true">
 						 <p class="tab-head"><i class="cloud upload icon"></i>Insert</p></a>
 					</li>
 
