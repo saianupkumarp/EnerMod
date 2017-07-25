@@ -99,6 +99,12 @@ border-radius: 0px;
 
 }
 
+.or{
+	margin: 10px 0 10px 0;
+	font-family: inherit;
+	color:inherit;
+	font-size: 18px;
+}
 .outlook:before {
 	float:left; 
     background-size:100% 100%;
