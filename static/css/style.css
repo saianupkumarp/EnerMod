@@ -134,15 +134,11 @@ border-radius: 0px;
 
 
 /* Page Header */
-header{
-	/* background-color: 	#E0E0E0; */
-	border-bottom: 1px solid #C8C8C8;
-	height:60px;
-	padding: 5px 20px 5px 20px;
-}
+
 .header-logo{
     width: 150px;
-    height: 45px;
+	height: 45px;
+	margin: .45em 1em;
 }
 .header-account{ 
 	position: absolute;
@@ -155,13 +151,17 @@ header{
 	padding: 3px;
 	color: #585858;
 }
+.ui.menu{
+	background: none;
+	height: 60px;
+	border: none;
+	margin: 0;
+	border-radius:0;
+}
+.ui.tiny.menu{
+	font-size:1em;
+}
 
-.ui.button.user-dropdown-menu{
-	background: none;
-}
-.ui.button.user-dropdown-menu:hover{
-	background: none;
-}
 .form-login-group{
 	/* margin: 0 10%;   */
 	width:80%; 
