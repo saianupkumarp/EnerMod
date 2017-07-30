@@ -6,276 +6,175 @@
     
     <title>EnerMod | Index</title> 
     
-    <link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../vendor/handsontable/dist/handsontable.full.min.css">
-    <link rel="stylesheet" href="../vendor/semantic/dist/semantic.min.css" >
-    
-    <script src="../vendor/jquery/dist/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="../vendor/handsontable/dist/handsontable.full.min.js"></script>
-    <script src="https://use.fontawesome.com/bb75f81a3d.js"></script>
-    
-    <script src="../vendor/semantic/dist/semantic.js"></script> 
-    <script>
-    $(document).ready(function() {
-      $('.ui.dropdown').dropdown({
-        onChange: function (value, text, $selectedItem) {
-          console.log(value);
-        },
-        forceSelection: false,
-        selectOnKeydown: false,
-        showOnFocus: false,
-        on: "click"
-      });
-
-    });
-    </script>
-    
+	<link rel="stylesheet" href="../vendor/semantic/dist/semantic.min.css" >
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
   	<link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+    
+	<script src="https://use.fontawesome.com/bb75f81a3d.js"></script>
+	<script src="../vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../vendor/handsontable/dist/handsontable.full.min.js"></script>
+	<script src="../vendor/semantic/dist/semantic.js"></script> 
+	<script src="../app/main.js"></script>
+    
+	
 </head>
 <body>
-	<div class="container bg_image">
+	<div class="bg_image">
 		<div class="ui tiny menu">
-			<a class="">
-					<img class="header-logo" src="../images/logo.png">
+			<a>
+				<img class="header-logo" src="../images/logo.png">
 			</a>
 			<div class="right menu">
 				<div class="ui dropdown item">
-					<span class="username"><i class="user icon"></i>Anup Kumar </span>
+					<span class="username" id="username"><i class="user icon"></i>Anup Kumar </span>
 					<i class="chevron circle down icon"></i>
 					<div class="menu">
-						<a class="item"><i class="setting icon"></i>Admin</a>
-						<a class="item"><i class="sign out icon"></i>Logout</a>
+						<a class="item" id="admin"><i class="setting icon"></i>Admin</a>
+						<a class="item" id="logout"><i class="sign out icon"></i>Logout</a>
 					</div>
 			</div>
 			</div>
 		</div>
-	<div class="ui centered grid">
-		<div class="column">
-		<div class="tab">
-
-			<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="#select" aria-hidden="true">
-						<p class="tab-head"><i class="add circle icon"></i>Select</p></a>
-					</li>
-					<li><a data-toggle="tab" href="#edit" aria-hidden="true">
-						<p class="tab-head"><i class="edit icon"></i>Edit</p></a>
-					</li>
-					<li><a data-toggle="tab" href="#insert" aria-hidden="true">
-						 <p class="tab-head"><i class="cloud upload icon"></i>Insert</p></a>
-					</li>
-
-				</ul>
-
-				<div class="tab-content">
-					<div id="select" class="tab-pane fade in active">
+		<div class="container">
+			<div class="ui centered grid">
+				<div class="twelve wide column">
+					<div class="ui top attached tabular menu">
+						<a class="active item" data-tab="select" id="selectTab"><i class="add circle icon"></i>Select</a>
+						<a class="item" data-tab="edit" id="editTab"><i class="edit icon"></i>Edit</a>
+						<a class="item" data-tab="insert" id="insertTab"><i class="cloud upload icon"></i>Insert</a>
+					</div>
+					<div class="ui bottom attached active tab segment" data-tab="select">
 						<div class="tab-header">
 							<i class="file text outline icon"></i>Version & Column Selector
 						</div>
-						<div class="selected-tab-content">
-							<form>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-md-4">
-											<label for="exampleInputEmail1">Data:</label>
-										</div>
-										<div class="col-md-8">
-											<div class="ui toggle checkbox toggle2">
-												<input type="checkbox" name="data">
-												<label>Get Data</label>
-											</div>
-										</div>
+						<div class="tab-content center">
+							<form class="ui form"> 
+								<div class="inline fields">
+									<div class="five wide field">
+										<label>Model:</label>
 									</div>
-
+									<div class="twelve wide field">
+										<select class="ui dropdown" name="selectedModel" id="selectedModel">
+											<option data-value="kem" value="kem">KEM</option>
+											<option data-value="kgemm">KGEMM</option>
+										</select>
+									</div>
 								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-md-4">
-											<label for="exampleSelect1">Version:</label>
-										</div>
-										<div class="col-md-8">
-											<select class="ui dropdown" id="selectVersion">
-												<option value="">Select Version</option>
-												<option value="5">5</option>
-												<option value="4">4</option>
-												<option value="3">3</option>
-												<option value="2">2</option>
-												<option value="1">1</option>
-											</select>
+								<div class="inline fields">
+									<div class="five wide field">
+										<label>Data:</label>
+									</div>
+									<div class="twelve wide field">
+										<div class="ui toggle checkbox toggle2">
+											<input type="checkbox" name="data">
+											<label>Get Data</label>
 										</div>
 									</div>
 								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-md-4">
-											<label for="exampleSelect1">Sub-Model:</label>
-										</div>
-										<div class="col-md-8">
-											<select class="ui dropdown" id="selectSubModel">
-												<option value="">Select Sub-Model</option>
-												<option value="Power">Power</option>
-												<option value="Fuel">Fuel</option>
-												<option value="Water">Water</option>
-												<option value="Power-Sub">Power-Sub</option>
-											</select>
-										</div>
+								<div class="inline fields">
+									<div class="five wide field">
+										<label>Version:</label>
+									</div>
+									<div class="twelve wide field">
+										<select class="ui dropdown" name="selectedVersion" id="selectedVersion">
+											<option value="">Select Version</option>
+											<option data-value="5">5</option>
+											<option data-value="4">4</option>
+											<option data-value="3">3</option>
+											<option data-value="2">2</option>
+											<option data-value="1">1</option>
+										</select>
 									</div>
 								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-md-4">
-											<label for="exampleSelect1">Function:</label>
-										</div>
-										<div class="col-md-8">
-											<select class="ui dropdown" id="selectFunction">
-												<option value="">Select Function</option>
-												<option value="FuelAllocated">FuelAllocated</option>
-												<option value="FuelAllocatedTrend">FuelAllocatedTrend</option>
-											</select>
-										</div>
+								<div class="inline fields">
+									<div class="five wide field">
+										<label>Sub-Model:</label>
+									</div>
+									<div class="twelve wide field">
+										<select class="ui dropdown" name="selectedSubModel" id="selectedSubModel">
+											<option value="">Select Sub-Model</option>
+											<option data-value="power">Power</option>
+											<option data-value="fuel">Fuel</option>
+											<option data-value="water">Water</option>
+											<option data-value="power-sub">Power-Sub</option>
+										</select>
 									</div>
 								</div>
-								<div class="form-group">
-									<div class="row">
-										<div class="col-md-4">
-											<label for="exampleSelect2">Columns to Edit:</label>
-										</div>
-										<div class="col-md-8">
-											<select class="ui fluid search dropdown" id="selectColumn" multiple="">
-												<option value="">Select the columns to edit</option>
-												<option value="Year">Year</option>
-												<option value="Region">Region</option>
-												<option value="FuelType">Fuel Type</option>
-												<option value="Season">Season</option>
-												<option value="Country">Country</option>
-												<option value="Value">Value</option>
-											</select>
-										</div>
+								<div class="inline fields">
+									<div class="five wide field">
+										<label>Function:</label>
+									</div>
+									<div class="twelve wide field">
+										<select class="ui dropdown" name="selectedFunction" id="selectedFunction">
+											<option value="">Select Function</option>
+											<option data-value="FuelAllocated">FuelAllocated</option>
+											<option data-value="FuelAllocatedTrend">FuelAllocatedTrend</option>
+										</select>
 									</div>
 								</div>
-
+								<div class="inline fields">
+									<div class="five wide field">
+										<label>Columns:</label>
+									</div>
+									<div class="twelve wide field">
+										<select class="ui fluid dropdown" name="selectedColumns" id="selectedColumns" multiple="">
+											<option value="">Select the columns to edit</option>
+											<option data-value="Year">Year</option>
+											<option data-value="Region">Region</option>
+											<option data-value="FuelType">Fuel Type</option>
+											<option data-value="Season">Season</option>
+											<option data-value="Country">Country</option>
+											<!-- <option value="Value">Value</option> -->
+										</select>
+									</div>
+								</div>
 							</form>
 						</div>
 					</div>
-					<div id="edit" class="tab-pane fade">
+					<div class="ui bottom attached tab segment" data-tab="edit">
 						<div class="tab-header">
 							<i class="file text outline icon"></i>Edit the table
 						</div>
-						<div class="selected-tab-content">
-								<p>Please Double-click on the cell to Edit Values:</p>
- 								<div class="" id="handsontable"></div> 
-						</div>
+						<div class="tab-content">
+							<p>Please Double-click on the cell to Edit Values:</p>
+							<div class="" id="handsontable"></div>
+						</div> 
 					</div>
-					<div id="insert" class="tab-pane fade">
+					<div class="ui bottom attached tab segment" data-tab="insert">
 						<div class="tab-header">
 							<i class="file text outline icon"></i>Insert the edits
 						</div>
-						<div class="selected-tab-content">
-							<div class="form-group">
-								<div class="ui toggle checkbox">
-									<input type="checkbox" name="public">
-									<label>Fix the version as production</label>
-								</div>
+						<div class="tab-content center">
+							<div class="ui toggle checkbox">
+								<input type="checkbox" name="public">
+								<label>Fix the version as production</label>
 							</div>
 						</div>
 					</div>
+
+					<div class="row" id="stepButtons">
+						<div class="column float-left">
+							<button type="submit" class="ui button" id="previous">
+								<i class="chevron circle left icon"></i> Previous
+							</button>
+						</div>
+						<div class="column float-right"> 
+							<button type="submit" class="ui button" id="next">
+								Next <i class="chevron circle right icon"></i>
+								<!-- <i class="database icon"></i> Insert -->
+							</button>
+						</div>
+					</div>
+
+
 				</div>
-
 			</div>
 		</div>
 	</div>
-		<div class="ui centered grid">
-    		<div class="">
-    
-				<button type="submit" class="btn" id="previous">
-					<i class="chevron circle left icon"></i> Previous
-				</button>
-			</div>
-			<div class="">
-				<button type="submit" class="btn" id="next">
-					Next <i class="chevron circle right icon"></i>
-				</button>
-			</div>
-		</div>
-	<!-- <i class="database icon"></i> Insert -->
-	</div>
-	</div>
+		
+<script src="../app/handsontable.js"></script>
 
-
-
-	<script>
-
-
-
-
-
-
-		var dataObject = [
-				{id: 1, year: 't1', fuelType: 'Arab Light', season: 'Winter', value: 10.5},
-				{id: 2, year: 't2', fuelType: 'HFO', season: 'Summer', value:25 },
-				{id: 3, year: 't3', fuelType: 'Nuclwar', season: 'Winter', value: 222}
-				];
-
-		yellowRenderer = function(instance, td, row, col, prop, value, cellProperties) {
-			Handsontable.renderers.TextRenderer.apply(this, arguments);
-			td.style.backgroundColor = '#FCF3CF';
-		};
-		var handsontableElement = document.querySelector('#handsontable');
-		var handsontableElementContainer = handsontableElement.parentNode;
-		var handsontableSettings = {
-					data: dataObject,
-					stretchH: 'all',
-					width: '100%',
-					autoWrapRow: true,
-					height: 321,
-					// maxRows: 22,
-					rowHeaders: true,
-					colHeaders: [
-							'ID',
-							'Year',
-							'Fuel Type',
-							'Season',
-							'Value'
-					],
-					columns: [
-							{
-								data: 'id',
-								type: 'numeric',
-								width: 40,
-								editor: false
-							},
-							{
-								data: 'year',
-								type: 'text',
-								editor: false
-							},
-							{
-								data: 'fuelType',
-								type: 'text',
-								editor: false
-
-							},
-							{
-								data: 'season',
-								type: 'text',
-								editor: false
-							},
-							{
-								data: 'value',
-								type: 'numeric',
-								format: '0.00',
-								renderer: yellowRenderer
-							}
-					],
-			customBorders: [
-			{col: 3, left: {width: 2, color: 'red'},
-			right: {width: 1, color: 'green'}, top: '', bottom: ''}
-			]
-		};
-
-		var handsontable = new Handsontable(handsontableElement, handsontableSettings);
-</script>
 </body>
 </html>

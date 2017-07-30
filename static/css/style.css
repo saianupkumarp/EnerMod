@@ -14,79 +14,43 @@ a:hover{
 	color:#61A24F;
 }
 
-/* Global */
-.container{
-    width:100%;
-	/* height:800px;   */
+.bg_image{
+	width:100%;
 	min-height:100%;
 	overflow: hidden;
-	/* background-color: #F8F8F8; */
 	padding: 0;
-	/* height: auto; */
-
-}
-.bg_image{
-	background-color:#6a6a6a;
-	/*height: 1000px;*/
 	background-image:url('../images/bg.png');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
 	background-attachment: fixed;
-	background-color: #F8F8F8; 
-
 }
+
 .bg_image:before{
 	opacity: 0.6;
 }
 
-#content{
-	margin:20% 27% 20% 27%;
+.login-content{
+	margin:23% 27% 23% 27%;
 }
 
 .logo{
-	margin:30px 0 30px 0 ;
+	margin:10px 0 10px 0 ;
     width: 190px;
     height: 65;
 }
+.container{
+   /* margin-top: 40px; */
+   padding: 0 15px 0 15px;
+   margin: 40px auto 0 auto;
 
-.input-group-lg>.form-control,.input-group-lg>.input-group-addon{
-border-radius: 0px;
 }
-
-.btn{
-   border-radius: 0px;
-   width:140px;
-   font-size: 15px;
-   padding: 10px 15px;
-   background-color: #48AC62;
-   color: white;
-   margin: 0px;
-   box-shadow: 0.1px 0.1px 5px #B8B8B8;
+.float-left{
+	float: left;
 }
-.btn:hover{
-	opacity: 0.9;
-	color: white;
+.float-right{
+	float: right;
 }
-
-.line{
-
-	box-shadow: inset 0 -1px 0 #ccc;
-	margin-top: 20px;
-}
-
-/* Outlook */
-.outlook{
-	width:180px;
-	height:40px;
-	 text-align: center;
-	background-color: #2272b9;
-	color: #FFFFFF;
-	/* margin: 0 25%; */
-	display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
+/* forgot password link*/
 .forgot-password{
 	text-decoration: none;
 	color:#3c3d3b;
@@ -99,11 +63,27 @@ border-radius: 0px;
 
 }
 
-.or{
-	margin: 10px 0 10px 0;
-	font-family: inherit;
-	color:inherit;
-	font-size: 18px;
+/* Outlook */
+.outlook{
+	width:180px;
+	height:40px;
+	background-color: #2272b9;
+	color: #FFFFFF;
+	/* margin: 0 25%; */
+	display: block;
+    margin-left: auto;
+	margin-right: auto;
+	box-shadow: 0.1px 0.1px 5px #B8B8B8;
+	border:none;
+	font-family:Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+	line-height:1.4; 
+	font-size: 15px;
+   	padding: 10px 15px;
+	
+}
+ 
+.outlook:hover{
+	opacity: 0.9;
 }
 .outlook:before {
 	float:left; 
@@ -114,24 +94,23 @@ border-radius: 0px;
     content: "";
     background-image:url('../images/outlook.ico');
 }
+/* pattern (login page)*/
 .pattern{
-   position: relative;
-   /*width: 100%;*/
-   height:850px;
+   position: absolute;
+   height:850px; 
    box-shadow: 1px 1px 15px #888888;
 }
 .login-title {
    position: absolute;
-   top: 300px;
-   left: 65px;
+   top: 305px;
+   left: 70px;
    /* width: 100%;  */
    color: #000;
    font: 48px/46px Helvetica, Sans-Serif;
    /* letter-spacing: -1px;   */
    /* background: rgba(0, 0, 0, 0.7); */
    /* padding: 10px;  */
-}
-
+} 
 
 /* Page Header */
 
@@ -151,6 +130,8 @@ border-radius: 0px;
 	padding: 3px;
 	color: #585858;
 }
+
+/* overwriting*/
 .ui.menu{
 	background: none;
 	height: 60px;
@@ -161,70 +142,43 @@ border-radius: 0px;
 .ui.tiny.menu{
 	font-size:1em;
 }
-
-.form-login-group{
-	/* margin: 0 10%;   */
-	width:100%; 
-	box-sizing: border-box; 
-	padding-bottom: 10px; 
+.row{
+	margin: 10px 0 10px 0;
+}
+.ui.form .inline.fields{
+	margin: 1em;
 }
 
-.form-group{
-	box-sizing: border-box;
-    width:50%;
-	/* margin: 0 25%; */
-    margin-left: auto;
-    margin-right: auto;
-	padding-bottom: 10px;
+
+.ui.button, .ui.button:hover{
+   border-radius: 0px !important;
+   width:120px;
+   height: 45px;
+   font-size: 15px;
+   padding: 10px 15px;
+   background-color: #48AC62 !important;
+   color: white;
+   margin: 0px;
+   box-shadow: 0.1px 0.1px 5px #B8B8B8;
+   font-weight: 100
+}
+.ui.button:hover{
+	opacity: 0.9;
 }
 
-.tab{
-	background: #fff;
-	margin: 3% 10% 3% 10%; 
-	min-height: 500px;
-	height:inherit;
-	
+.ui.form input[type=email], .ui.form input[type=password]{
+	font-size:1.3em;
+	height:45px;
+	border-radius:0px !important;
 }
-.nav.nav-tabs{
-	font-size: 18px;
-	font-family: Arial,sans-serif;
+.ui.input input{
+	border-radius: 0px ;
 }
-ul.nav.nav-tabs{
-	 background:#efefef; 
-	/* background:#ddd; */
-
+.ui.left.icon{
+	font-size:1em;
 }
-.nav-tabs li{
-	text-align: center;
-	width:33.33%;
-}
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-    color: #fff;
-    cursor: default;
-	background-color: #6a6a6a;
-	border: 1px solid #6a6a6a;
-    border-bottom-color: transparent; 
-}
-.tab-header{
-	height:35px;
-	background: #6a6a6a;
-	color:#fff;
-	padding: 5px 15px;
-}
-.selected-tab-content{
-	margin: 40px 20px 20px 20px;
-	padding:10px;
-}
-
-.tab-head{
-	font-family: Arial, Helvetica, sans-serif;
-	display:inline;
-	padding:0 5px;
-	font-weight: bold;
-
-}
-.tab-pane{
-	margin:0%;
+.ui[class*="left icon"].input>input{
+	padding-left: 2em !important;
 }
 
 .ui.toggle.checkbox .box:before, .ui.toggle.checkbox label:before{
@@ -238,65 +192,51 @@ ul.nav.nav-tabs{
 	border-radius:0px;
 }
 
-.pager li a{
-	position: relative;
-	bottom: 110px;
-	background: #61A24F;
-	color:#fff;
-	border: none;
+.tab{
+	background: #fff;
+	margin: 3% 10% 3% 10%; 
+	min-height: 500px;
+	height:inherit;
+	min-width:300px;
+}
+
+.ui.segment[class*="bottom attached"]{
+	border-radius: 0px;
+}
+.ui.segment{
+	padding: 0px;
+	box-shadow: 0.1px 0.1px 5px #B8B8B8;
+}
+.ui.top.attached.menu>.item:first-child{
+	/* border-radius: 0px !important ;  */
+}
+
+.ui.tabular.menu .item, .ui.tabular.menu .active.item{
+	width: 33.339%;
+	font-size: 18px;
+	font-weight:400;
+	color: #48AC62;
 	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	border-radius: 4px;
-	font-weight: normal;
-	width:150px;
-	border: none;
-	font-size: 15px;
-	font-weight: normal;
-	line-height: 1.4;
-	padding: 10px 15px;
-	-webkit-transition-duration: 0.4s;
-   transition-duration: 0.4s;
-   cursor: pointer;
-   margin-right: 15px;
+	display: block;
 }
-
-
-@media only screen and (max-width: 990px) {
-	.pattern,.login-title{
-		display: none;
-	}
-
+.ui.tabular.menu .active.item{
+	background-color: #7E7F82;
+	color: #fff;
+	border-bottom-color: transparent;
 }
-@media only screen and (max-width: 768px) {
-	 [class*="col-"] {
-        width: 100%;
-    }
-    .line,.or{
-		display: none;
-	}
-	.pattern,.login-title{
-		display: none;
-	}
-
+.tab-header{
+	height:45px;
+	background: #7E7F82;
+	color:#fff;
+	padding: 10px 15px; 
+	font-size: 16px;
 }
-@media only screen and (max-width: 500px) {
-	 [class*="col-"] {
-        width: 100%;
-    }
-    .line,.or{
-		display: none;
-	}
-	.pattern,.login-title{
-		display: none;
-	}
-    .tabContent{margin:0 15px;}
-    .form-group{
-    	margin: 0 10%;
-    	width:70%;
-	}
-	.outlook{
-    	margin: 0px;
-	}
+.tab-content{
+	padding: 30px;
 }
-
+.center{
+	text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
