@@ -2,9 +2,9 @@ from os import path
 
 # Flask
 APP_NAME = 'enermod'
-DEBUG = False
+DEBUG = True
 SERVER_HOST = 'localhost'
-SERVER_PORT = 8010
+SERVER_PORT = 8810
 SECRET_KEY = 'C{2{]fKbo91G7IpkZniy'
 
 # Localization
@@ -14,3 +14,13 @@ FALLBACK_LOCALE = 'en'
 # Paths
 APP_ROOT = path.dirname(path.abspath(__file__))
 TEMPLATES_ROOT = path.join(APP_ROOT, 'templates')
+
+# SQL ALCHEMY
+SQLALCHEMY_DATABASE_URI = 'sqlite:////Enermod_Test.db'
+
+# WTF Secret key
+WTF_CSRF_SECRET_KEY = 'nrX:z]C^wO<w5{,'
+
+# LDAP
+LDAP_PROVIDER_URL = 'ldap://blueberry-03.KAPSARC.ORG:389'
+LDAP_PROTOCOL_VERSION = 3

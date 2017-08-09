@@ -1,0 +1,6 @@
+Flask==0.10.1
+python-ldap==2.4.38
+SQLAlchemy==1.1.12
+flask-login==0.4.0
+flask-sqlalchemy==2.2
+flask-wtf==0.14.2
