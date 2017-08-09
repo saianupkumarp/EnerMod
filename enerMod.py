@@ -88,7 +88,7 @@ def login():
                 'CN=%s,OU=Employees,OU=Managed Users,DC=KAPSARC,DC=ORG' % request.form.get('username'), request.form.get('password')
             )
         except ldap.INVALID_CREDENTIALS:
-            print 'Invalid Username and Password'
+            flash('Invalid Username or Password', 'error')
             return render_template('login.html', form=form)
         user = User.query.filter_by(username=request.form.get('username')).first()
         if not user:
@@ -96,10 +96,10 @@ def login():
             db.session.add(user)
             db.session.commit()
         login_user(user)
-        print 'Login Success'
+        flash('Login Success', 'info')
         return redirect(url_for('home'))
     if form.errors:
-        print 'form errors'
+        flash('Form errors', 'error')
 
     return render_template('login.html', form=form)
 
