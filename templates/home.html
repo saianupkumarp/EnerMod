@@ -43,24 +43,25 @@
             <div class="ui centered grid">
                 <div class="twelve wide column">
                     <div class="ui top attached tabular menu">
-                        <a class="active item" data-tab="select" id="selectTab"><i class="add circle icon"></i>Select</a>
-                        <a class="item" data-tab="edit" id="editTab"><i class="edit icon"></i>Edit</a>
-                        <a class="item" data-tab="insert" id="insertTab"><i class="cloud upload icon"></i>Insert</a>
+                        <a class="active item" data-tab="1" id="selectTab"><i class="add circle icon"></i>Select</a>
+                        <a class="item" data-tab="2" id="editTab"><i class="edit icon"></i>Edit</a>
+                        <a class="item" data-tab="3" id="insertTab"><i class="cloud upload icon"></i>Insert</a>
                     </div>
-                    <div class="ui bottom attached active tab segment" data-tab="select">
+                    <div class="ui bottom attached active tab segment" data-tab="1">
                         <div class="tab-header">
                             <i class="file text outline icon"></i>Version & Column Selector
                         </div>
                         <div class="tab-content center">
-                            <form class="ui form"> 
+                            <form class="ui form" method="POST" action="edit"> 
                                 <div class="inline fields">
                                     <div class="five wide field">
                                         <label>Model:</label>
                                     </div>
                                     <div class="twelve wide field">
                                         <select class="ui dropdown" name="selectedModel" id="selectedModel">
-                                            <option data-value="kem" value="kem">KEM</option>
-                                            <option data-value="kgemm">KGEMM</option>
+                                            {% for x in modeltype %}
+                                                <option data-value="{{x}}" value="{{x}}">{{x}}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                 </div>
@@ -70,7 +71,7 @@
                                     </div>
                                     <div class="twelve wide field">
                                         <div class="ui toggle checkbox toggle2">
-                                            <input type="checkbox" name="data">
+                                            <input type="checkbox" checked="checked" name="data">
                                             <label>Get Data</label>
                                         </div>
                                     </div>
@@ -82,11 +83,9 @@
                                     <div class="twelve wide field">
                                         <select class="ui dropdown" name="selectedVersion" id="selectedVersion">
                                             <option value="">Select Version</option>
-                                            <option data-value="5">5</option>
-                                            <option data-value="4">4</option>
-                                            <option data-value="3">3</option>
-                                            <option data-value="2">2</option>
-                                            <option data-value="1">1</option>
+                                            {% for x in mainversionList %}
+                                                <option data-value="{{x}}">{{x}}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                 </div>
@@ -97,10 +96,9 @@
                                     <div class="twelve wide field">
                                         <select class="ui dropdown" name="selectedSubModel" id="selectedSubModel">
                                             <option value="">Select Sub-Model</option>
-                                            <option data-value="power">Power</option>
-                                            <option data-value="fuel">Fuel</option>
-                                            <option data-value="water">Water</option>
-                                            <option data-value="power-sub">Power-Sub</option>
+                                            {% for x in submodels %}
+                                                <option data-value="{{x}}">{{x}}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                 </div>
@@ -111,8 +109,9 @@
                                     <div class="twelve wide field">
                                         <select class="ui dropdown" name="selectedFunction" id="selectedFunction">
                                             <option value="">Select Function</option>
-                                            <option data-value="FuelAllocated">FuelAllocated</option>
-                                            <option data-value="FuelAllocatedTrend">FuelAllocatedTrend</option>
+                                            {% for x in funclist %}
+                                                <option data-value="{{x}}">{{x}}</option>
+                                            {% endfor %}
                                         </select>
                                     </div>
                                 </div>
@@ -121,21 +120,20 @@
                                         <label>Columns:</label>
                                     </div>
                                     <div class="twelve wide field">
-                                        <select class="ui fluid dropdown" name="selectedColumns" id="selectedColumns" multiple="">
+                                        <select class="ui fluid dropdown" id="selectedColumns" multiple>
                                             <option value="">Select the columns to edit</option>
-                                            <option data-value="Year">Year</option>
-                                            <option data-value="Region">Region</option>
-                                            <option data-value="FuelType">Fuel Type</option>
-                                            <option data-value="Season">Season</option>
-                                            <option data-value="Country">Country</option>
-                                            <!-- <option value="Value">Value</option> -->
+                                            <option value="YEAR_ID">Year</option>
+                                            <option value="REG_ID">Region</option>
+                                            <option value="FUEL_ID">Fuel Type</option>
+                                            <option value="SEA_ID">Season</option>
+                                            <option value="CNTRY_ID">Country</option>
                                         </select>
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <div class="ui bottom attached tab segment" data-tab="edit">
+                     <div class="ui bottom attached tab segment" data-tab="2">
                         <div class="tab-header">
                             <i class="file text outline icon"></i>Edit the table
                         </div>
@@ -144,7 +142,7 @@
                             <div class="" id="handsontable"></div>
                         </div> 
                     </div>
-                    <div class="ui bottom attached tab segment" data-tab="insert">
+                    <div class="ui bottom attached tab segment" data-tab="3">
                         <div class="tab-header">
                             <i class="file text outline icon"></i>Insert the edits
                         </div>
@@ -154,9 +152,9 @@
                                 <label>Fix the version as production</label>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row" id="stepButtons">
+                    </div> 
+                    
+                    <!-- <div class="row" id="stepButtons">
                         <div class="column float-left">
                             <button type="submit" class="ui button" id="previous">
                                 <i class="chevron circle left icon"></i> Previous
@@ -165,10 +163,9 @@
                         <div class="column float-right"> 
                             <button type="submit" class="ui button" id="next">
                                 Next <i class="chevron circle right icon"></i>
-                                <!-- <i class="database icon"></i> Insert -->
                             </button>
                         </div>
-                    </div>
+                    </div> -->
 
 
                 </div>

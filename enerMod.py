@@ -1,18 +1,23 @@
 from flask import Flask, send_from_directory, render_template, flash, redirect, url_for, Blueprint, g, request
-from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager, current_user, login_user, logout_user, login_required
 import ldap
 from flask_wtf import Form
 from wtforms import TextField, PasswordField
 from wtforms.validators import InputRequired
+from core.models import db, ModelType, User
+from core.api import rest_api
+from core import data
 import settings
 
 #Flask App
 app = Flask(__name__, static_url_path='/enermod/assets')
 app.config.from_object(settings)
 
-#SQLAlchemy
-db = SQLAlchemy(app)
+#SQLAlchemy Initiate
+db.init_app(app)
+
+#EnerMod Rest api
+app.register_blueprint(rest_api, url_prefix='/enermod/api')
 
 #Flask Login Manager
 login_manager = LoginManager()
@@ -21,27 +26,6 @@ login_manager.init_app(app)
 #Name of the view to redirect when user needs to login
 login_manager.login_view = 'login'
 
-#User Class for Auth
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(100))
- 
-    def __init__(self, username, password):
-        self.username = username
- 
-    @staticmethod
-    def is_authenticated(self):
-        return True
- 
-    def is_active(self):
-        return True
- 
-    def is_anonymous(self):
-        return False
- 
-    def get_id(self):
-        return unicode(self.id)
- 
 #LoginForm Class
 class LoginForm(Form):
     username = TextField('Username', [InputRequired()])
@@ -67,7 +51,7 @@ def get_current_user():
 @app.route('/enermod/home')
 @login_required
 def home():
-    return render_template('home.html')
+    return render_template('home.html', modeltype = data.get_dist_modelType(), submodels = data.get_dist_sub_models(), funclist = data.get_dist_func(), mainversionList = data.get_main_version(current_user.username))
 
 @app.route('/enermod/login', methods=['GET', 'POST'])
 def login():
@@ -112,8 +96,6 @@ def logout():
 @app.route('/enermod/favicon.ico')
 def favicon():
     return app.send_static_file('favicon.ico')
-
-db.create_all()
 
 if __name__ == "__main__":
     try:
