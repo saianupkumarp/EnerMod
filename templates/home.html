@@ -11,13 +11,13 @@
     <link rel="stylesheet" type="text/css" href="/enermod/assets/css/style.css">
     <link rel="shortcut icon" href="/enermod/assets/images/favicon.ico" type="image/x-icon">
       <link rel="icon" href="/enermod/assets/images/favicon.ico" type="image/x-icon">
-    
-    <script src="//use.fontawesome.com/bb75f81a3d.js"></script>
+
+      <script src="//use.fontawesome.com/bb75f81a3d.js"></script>
     <script src="/enermod/assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="/enermod/assets/vendor/handsontable/dist/handsontable.full.min.js"></script>
     <script src="/enermod/assets/vendor/semantic/dist/semantic.js"></script> 
     <script src="/enermod/assets/app/main.js"></script>
-    
+
     
 </head>
 <body>
@@ -45,7 +45,7 @@
                     <div class="ui top attached tabular menu">
                         <a class="active item" data-tab="1" id="selectTab"><i class="add circle icon"></i>Select</a>
                         <a class="item" data-tab="2" id="editTab"><i class="edit icon"></i>Edit</a>
-                        <a class="item" data-tab="3" id="insertTab"><i class="cloud upload icon"></i>Insert</a>
+                        <a class="item" data-tab="3" id="queryTab"><i class="database icon"></i>SQL query</a>
                     </div>
                     <div class="ui bottom attached active tab segment" data-tab="1">
                         <div class="tab-header">
@@ -71,7 +71,7 @@
                                     </div>
                                     <div class="twelve wide field">
                                         <div class="ui toggle checkbox toggle2">
-                                            <input type="checkbox" checked="checked" name="data">
+                                            <input type="checkbox" checked="checked" name="data" disabled="disabled">
                                             <label>Get Data</label>
                                         </div>
                                     </div>
@@ -130,6 +130,7 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div id="errMsg" class="ui error message"></div>
                             </form>
                         </div>
                     </div>
@@ -146,11 +147,21 @@
                         <div class="tab-header">
                             <i class="file text outline icon"></i>Insert the edits
                         </div>
-                        <div class="tab-content center">
-                            <div class="ui toggle checkbox">
+                        <div class="tab-content">
+                            <!-- <div class="ui toggle checkbox">
                                 <input type="checkbox" name="public">
                                 <label>Fix the version as production</label>
+                            </div> -->
+                            <div class="ui positive message">
+                                <div class="header">
+                                    message
+                                </div>
+                                <p>Record has been inserted successfully.</p>
                             </div>
+                            <code class="lang-sql">
+                                <button class="copy-btn" data-clipboard-target="#clipboard">Copy</button>
+                                <div id="clipboard">SELECT * FROM Customers;</div>
+                            </code>
                         </div>
                     </div> 
                     
@@ -175,6 +186,19 @@
      {% endif %}
         {% endblock %}
 <script src="/enermod/assets/app/handsontable.js"></script>
+<script src="/enermod/assets/app/form.validation.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script>
+var clipboard = new Clipboard('.copy-btn');
+
+clipboard.on('success', function(e) {
+    console.log(e);
+});
+
+clipboard.on('error', function(e) {
+    console.log(e);
+});
+</script>
 
 </body>
 </html>
