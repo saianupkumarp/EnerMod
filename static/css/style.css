@@ -97,21 +97,10 @@ a:hover{
 /* pattern (login page)*/
 .pattern{
    position: absolute;
-   height:850px; 
+   height: 110%;
    box-shadow: 1px 1px 15px #888888;
+   overflow: hidden;
 }
-.login-title {
-   position: absolute;
-   top: 305px;
-   left: 70px;
-   /* width: 100%;  */
-   color: #000;
-   font: 48px/46px Helvetica, Sans-Serif;
-   /* letter-spacing: -1px;   */
-   /* background: rgba(0, 0, 0, 0.7); */
-   /* padding: 10px;  */
-} 
-
 /* Page Header */
 
 .header-logo{
@@ -266,4 +255,39 @@ code{
 	cursor: pointer;
 	float: right;
 	text-align: center;
+ }
+ @media only screen and (max-width: 990px) {
+	.pattern,.login-title{
+		display: none;
+	}
+ }
+ @media only screen and (max-width: 768px) {
+	[class*="col-"] {
+		width: 100%;
+	}
+	.line,.or{
+		display: none;
+	}
+	.pattern,.login-title{
+		display: none;
+	}
+ }
+ @media only screen and (max-width: 500px) {
+	[class*="col-"] {
+		width: 100%;
+	}
+	.line,.or{
+		display: none;
+	}
+	.pattern,.login-title{
+		display: none;
+	}
+	.tabContent{margin:0 15px;}
+	.form-group{
+		margin: 0 10%;
+		width:70%;
+	}
+	.outlook{
+		margin: 0px;
+	}
  }
