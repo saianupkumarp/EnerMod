@@ -4,7 +4,7 @@ from os import path
 APP_NAME = 'enermod'
 DEBUG = True
 SERVER_HOST = 'localhost'
-SERVER_PORT = 8810
+SERVER_PORT = 8010
 SECRET_KEY = 'C{2{]fKbo91G7IpkZniy'
 
 # Localization

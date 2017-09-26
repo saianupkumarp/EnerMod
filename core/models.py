@@ -47,7 +47,7 @@ class SubModels(db.Model):
     SM_SHORT_NAME = db.Column(db.String(10))
     SM_DESC = db.Column(db.String(50))
 
-#Fuel Allocation
+#Function
 class FunctionDetails(db.Model):
     __tablename__ = 'FunctionDetails'
     __table_args__ = {'schema': 'EMD'}
