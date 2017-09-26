@@ -6,13 +6,17 @@ $(function() {
     var tableHeader
     $('.tab.segment').each(function(i){
         var tabsLen = $('.tab.segment').length - 1;
-        if (i != tabsLen) {
+        if (i == 0) {
             next = i + 2
             $(this).append("<div class='column float-right'><button type='submit' class='ui button' id='next-tab' rel='" + next + "' sel='" + i + "'>Next <i class='chevron circle right icon'></i></button></div>");
         }
+        if (i == 1) {
+            next = i + 2
+            $(this).append("<div class='column float-right'><button type='submit' class='ui button' id='next-tab' rel='" + next + "' sel='" + i + "'><i class='cloud upload icon'></i> Insert</button></div>");
+        }
         if (i != 0) {
             prev = i;
-            $(this).append("<div class='column float-left'><button type='submit' class='ui button' id='prev-tab' rel='" + prev + "' sel='" + i + "'>Previous <i class='chevron circle right icon'></i></button></div>");
+            $(this).append("<div class='column float-left'><button type='submit' class='ui button' id='prev-tab' rel='" + prev + "' sel='" + i + "'><i class='chevron circle left icon'></i> Previous</button></div>");
         }
     })
 
@@ -74,16 +78,5 @@ $(function() {
     });
 
 
-    //Form Validation
-    // $('.ui.form')
-    //         .form({
-    //             fields: {
-    //             selectedModel: 'empty',
-    //             selectedVersion: 'empty',
-    //             selectedSubModel: 'empty',
-    //             selectedFunction: 'empty',
-    //             selectedColumns: 'empty',
-    //             }
-    //         });
-            
+
 });

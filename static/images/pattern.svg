@@ -5529,4 +5529,8 @@
 		</g>
 	</g>
 </switch>
+<text style="font:44px Helvetica, Sans-Serif;fill: #000;">
+    <tspan x="55" y="295">EnerMod </tspan>
+    <tspan x="55" y="345">Databrowser</tspan>
+</text>
 </svg>
