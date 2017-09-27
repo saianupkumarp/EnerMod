@@ -139,13 +139,13 @@ a:hover{
 }
 
 
-.ui.button, .ui.button:hover{
-   border-radius: 0px !important;
+.ui.button, .ui.button:hover, .ui.button:focus{
+   border-radius: 0px;
    width:120px;
    height: 45px;
    font-size: 15px;
    padding: 10px 15px;
-   background-color: #48AC62 !important;
+   background-color: #48AC62;
    color: white;
    margin: 10px 0 10px 0;
    box-shadow: 0.1px 0.1px 5px #B8B8B8;
@@ -153,6 +153,11 @@ a:hover{
 }
 .ui.button:hover{
 	opacity: 0.9;
+}
+.inverted{
+	border-radius: 0px !important;
+	width:115px !important;
+	height: 35px !important;
 }
 
 .ui.form input[type=text], .ui.form input[type=password]{
@@ -241,7 +246,7 @@ code{
     border: 1px solid #ccc;
 }
 .copy-btn{
-	border-radius: 0px !important;
+	border-radius: 0px ;
 	width:50px;
 	height: 25px;
 	font-size: 11px;
