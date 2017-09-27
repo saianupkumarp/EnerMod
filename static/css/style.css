@@ -1,40 +1,40 @@
 
 body{
 
-	font:15px/1.5 Helvetica,sans-serif;
-	padding:0;
-	margin:0;
-	background-color: #efefef;
+    font:15px/1.5 Helvetica,sans-serif;
+    padding:0;
+    margin:0;
+    background-color: #efefef;
 }
 
 a{
-	color:#61A24F;
+    color:#61A24F;
 }
 a:hover{
-	color:#61A24F;
+    color:#61A24F;
 }
 
 .bg_image{
-	width:100%;
-	min-height:100%;
-	overflow: hidden;
-	padding: 0;
-	background-image:url('../images/bg.png');
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	background-attachment: fixed;
+    width:100%;
+    min-height:100%;
+    overflow: hidden;
+    padding: 0;
+    background-image:url('../images/bg.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
 }
 
 .bg_image:before{
-	opacity: 0.6;
+    opacity: 0.6;
 }
 
 .login-content{
-	margin:23% 27% 23% 27%;
+    margin:23% 27% 23% 27%;
 }
 
 .logo{
-	margin:10px 0 10px 0 ;
+    margin:10px 0 10px 0 ;
     width: 190px;
     height: 65;
 }
@@ -45,48 +45,69 @@ a:hover{
 
 }
 .float-left{
-	float: left;
+    float: left;
 }
 .float-right{
-	float: right;
+    float: right;
 }
 /* forgot password link*/
 .forgot-password{
-	text-decoration: none;
-	color:#3c3d3b;
-	font-size:14px;
-	/* margin:10px; */
+    text-decoration: none;
+    color:#3c3d3b;
+    font-size:14px;
+    /* margin:10px; */
 }
 .forgot-password:hover{
-	/* text-decoration: none; */
-	color:#6a6a6a;
+    /* text-decoration: none; */
+    color:#6a6a6a;
 
 }
+
+/* Loading */
+#loading {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: block;
+    opacity: 0.7;
+    background-color: #fff;
+    z-index: 99;
+    text-align: center;
+ }
+ 
+ #loading-image {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   /* z-index: 100; */
+ }
 
 /* Outlook */
 .outlook{
-	width:180px;
-	height:40px;
-	background-color: #2272b9;
-	color: #FFFFFF;
-	/* margin: 0 25%; */
-	display: block;
+    width:180px;
+    height:40px;
+    background-color: #2272b9;
+    color: #FFFFFF;
+    /* margin: 0 25%; */
+    display: block;
     margin-left: auto;
-	margin-right: auto;
-	box-shadow: 0.1px 0.1px 5px #B8B8B8;
-	border:none;
-	font-family:Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-	line-height:1.4; 
-	font-size: 15px;
-   	padding: 10px 15px;
-	
+    margin-right: auto;
+    box-shadow: 0.1px 0.1px 5px #B8B8B8;
+    border:none;
+    font-family:Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    line-height:1.4; 
+    font-size: 15px;
+       padding: 10px 15px;
+    
 }
  
 .outlook:hover{
-	opacity: 0.9;
+    opacity: 0.9;
 }
 .outlook:before {
-	float:left; 
+    float:left; 
     background-size:100% 100%;
     display: inline-block;
     width: 22px;
@@ -105,37 +126,37 @@ a:hover{
 
 .header-logo{
     width: 150px;
-	height: 45px;
-	margin: .45em 1em;
+    height: 45px;
+    margin: .45em 1em;
 }
 .header-account{ 
-	position: absolute;
+    position: absolute;
     top: 0;
-	right: 20px;
-	padding-top: 20px;
-	/* border-left: 1px solid #585858; */
+    right: 20px;
+    padding-top: 20px;
+    /* border-left: 1px solid #585858; */
 }
 .username{
-	padding: 3px;
-	color: #585858;
+    padding: 3px;
+    color: #585858;
 }
 
 /* overwriting*/
 .ui.menu{
-	background: none;
-	height: 60px;
-	border: none;
-	margin: 0;
-	border-radius:0;
+    background: none;
+    height: 60px;
+    border: none;
+    margin: 0;
+    border-radius:0;
 }
 .ui.tiny.menu{
-	font-size:1em;
+    font-size:1em;
 }
 .row{
-	margin: 10px 0 10px 0;
+    margin: 10px 0 10px 0;
 }
 .ui.form .inline.fields{
-	margin: 1em;
+    margin: 1em;
 }
 
 
@@ -152,147 +173,147 @@ a:hover{
    font-weight: 100
 }
 .ui.button:hover{
-	opacity: 0.9;
+    opacity: 0.9;
 }
 .inverted{
-	border-radius: 0px !important;
-	width:115px !important;
-	height: 35px !important;
+    border-radius: 0px !important;
+    width:115px !important;
+    height: 35px !important;
 }
 
 .ui.form input[type=text], .ui.form input[type=password]{
-	font-size:1.3em;
-	height:40px;
-	border-radius:0px !important;
+    font-size:1.3em;
+    height:40px;
+    border-radius:0px !important;
 }
 .ui.input input{
-	border-radius: 0px ;
+    border-radius: 0px ;
 }
 .ui.left.icon{
-	font-size:1em;
+    font-size:1em;
 }
 .ui[class*="left icon"].input>input{
-	padding-left: 2em !important;
+    padding-left: 2em !important;
 }
 
 .ui.toggle.checkbox .box:before, .ui.toggle.checkbox label:before{
-	background-color: #C8C8C8;
+    background-color: #C8C8C8;
 }
 .ui.toggle.checkbox .box:after, .ui.toggle.checkbox label:after{
-	background:#eeeeee linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+    background:#eeeeee linear-gradient(transparent, rgba(0, 0, 0, 0.05));
 }
 
 .ui.selection.dropdown, .ui.selection.dropdown .menu{
-	border-radius:0px;
+    border-radius:0px;
 }
 
 .tab{
-	background: #fff;
-	margin: 3% 10% 3% 10%; 
-	min-height: 400px;
-	height:inherit;
-	min-width:300px;
+    background: #fff;
+    margin: 3% 10% 3% 10%; 
+    min-height: 400px;
+    height:inherit;
+    min-width:300px;
 }
 
 .ui.segment[class*="bottom attached"]{
-	border-radius: 0px;
+    border-radius: 0px;
 }
 .ui.segment{
-	padding: 0px;
-	box-shadow: 0.1px 0.1px 5px #B8B8B8;
+    padding: 0px;
+    box-shadow: 0.1px 0.1px 5px #B8B8B8;
 }
 .ui.top.attached.menu>.item:first-child{
-	/* border-radius: 0px !important ;  */
+    /* border-radius: 0px !important ;  */
 }
 
 .ui.tabular.menu .item, .ui.tabular.menu .active.item{
-	width: 33.339%;
-	font-size: 18px;
-	font-weight:400;
-	color: #48AC62;
-	text-align: center;
-	display: block;
+    width: 33.339%;
+    font-size: 18px;
+    font-weight:400;
+    color: #48AC62;
+    text-align: center;
+    display: block;
 }
 .ui.tabular.menu .active.item{
-	background-color: #7E7F82;
-	color: #fff;
-	border-bottom-color: transparent;
+    background-color: #7E7F82;
+    color: #fff;
+    border-bottom-color: transparent;
 }
 .tab-header{
-	height:45px;
-	background: #7E7F82;
-	color:#fff;
-	padding: 10px 15px; 
-	font-size: 16px;
+    height:45px;
+    background: #7E7F82;
+    color:#fff;
+    padding: 10px 15px; 
+    font-size: 16px;
 }
 .tab-content{
-	min-height: inherit;
-	padding: 30px;
+    min-height: inherit;
+    padding: 30px;
 }
 .center{
-	text-align: center;
+    text-align: center;
     align-items: center;
     display: flex;
     justify-content: center;
 }
 /* clipboard */
 code{
-	margin-top: 40px;
-	display: block;
-	padding: 15px;
+    margin-top: 40px;
+    display: block;
+    padding: 15px;
     font-size: 13px;
     color: #333;
     background-color: #f5f5f5;
     border: 1px solid #ccc;
 }
 .copy-btn{
-	border-radius: 0px ;
-	width:50px;
-	height: 25px;
-	font-size: 11px;
-	padding: 10px 15px;
-	background-color: #237CCA;
-	color: white;
-	margin: 0px;
-	box-shadow: 0.1px 0.1px 5px #B8B8B8;
-	border: none;
-	padding: .25rem .5rem;
-	cursor: pointer;
-	float: right;
-	text-align: center;
+    border-radius: 0px ;
+    width:50px;
+    height: 25px;
+    font-size: 11px;
+    padding: 10px 15px;
+    background-color: #237CCA;
+    color: white;
+    margin: 0px;
+    box-shadow: 0.1px 0.1px 5px #B8B8B8;
+    border: none;
+    padding: .25rem .5rem;
+    cursor: pointer;
+    float: right;
+    text-align: center;
  }
  @media only screen and (max-width: 990px) {
-	.pattern,.login-title{
-		display: none;
-	}
+    .pattern,.login-title{
+        display: none;
+    }
  }
  @media only screen and (max-width: 768px) {
-	[class*="col-"] {
-		width: 100%;
-	}
-	.line,.or{
-		display: none;
-	}
-	.pattern,.login-title{
-		display: none;
-	}
+    [class*="col-"] {
+        width: 100%;
+    }
+    .line,.or{
+        display: none;
+    }
+    .pattern,.login-title{
+        display: none;
+    }
  }
  @media only screen and (max-width: 500px) {
-	[class*="col-"] {
-		width: 100%;
-	}
-	.line,.or{
-		display: none;
-	}
-	.pattern,.login-title{
-		display: none;
-	}
-	.tabContent{margin:0 15px;}
-	.form-group{
-		margin: 0 10%;
-		width:70%;
-	}
-	.outlook{
-		margin: 0px;
-	}
+    [class*="col-"] {
+        width: 100%;
+    }
+    .line,.or{
+        display: none;
+    }
+    .pattern,.login-title{
+        display: none;
+    }
+    .tabContent{margin:0 15px;}
+    .form-group{
+        margin: 0 10%;
+        width:70%;
+    }
+    .outlook{
+        margin: 0px;
+    }
  }

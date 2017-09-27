@@ -23,6 +23,9 @@
 <body>
     {% block container %}
      {% if current_user.is_authenticated%}
+     <div id="loading">
+        <img id="loading-image" src="/enermod/assets/images/kap_loading.gif" alt="Loading..." />
+      </div>
     <div class="bg_image">
         <div class="ui tiny menu">
             <a>
@@ -173,7 +176,7 @@
                             </div>
                             <code class="lang-sql">
                                 <button class="copy-btn" data-clipboard-target="#clipboard">Copy</button>
-                                <div id="clipboard">SELECT * FROM Customers;</div>
+                                <div id="clipboard"></div>
                             </code>
                         </div>
                     </div> 
@@ -204,11 +207,11 @@
 var clipboard = new Clipboard('.copy-btn');
 
 clipboard.on('success', function(e) {
-    console.log(e);
+    //console.log(e);
 });
 
 clipboard.on('error', function(e) {
-    console.log(e);
+    //console.log(e);
 });
 </script>
 
