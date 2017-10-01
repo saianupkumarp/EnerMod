@@ -51,7 +51,7 @@ def get_current_user():
 @app.route('/enermod/home')
 @login_required
 def home():
-    return render_template('home.html', modeltype = data.get_dist_modelType(), submodels = data.get_dist_sub_models(), funclist = data.get_dist_func(), mainversionList = data.get_main_version(current_user.username))
+    return render_template('home.html', owner = data.get_dist_username(), modeltype = data.get_dist_modelType(), submodels = data.get_dist_sub_models(), funclist = data.get_dist_func(), mainversionList = data.get_main_version(current_user.username))
 
 @app.route('/enermod/login', methods=['GET', 'POST'])
 def login():

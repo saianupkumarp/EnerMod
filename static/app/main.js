@@ -31,9 +31,10 @@ $(function() {
             if(validate(cols, model, sm, fnname)){
                 $('#loading').show();
                 $.ajax({
-                    url: '/enermod/api/getTableData?cols='+$('#selectedColumns').dropdown('get value')[$('#selectedColumns').dropdown('get value').length -1]+'&model='+$('#selectedModel').find(":selected").val()+'&sm='+$('#selectedSubModel').find(':selected').val()+'&fnname='+$('#selectedFunction').find(':selected').val(),
+                    url: '/enermod/api/getTableData?cols='+$('#selectedColumns').dropdown('get value')[$('#selectedColumns').dropdown('get value').length -1]+'&model='+$('#selectedModel').find(":selected").val()+'&sm='+$('#selectedSubModel').find(':selected').val()+'&fnname='+$('#selectedFunction').find(':selected').val()+'&user='+$('#selectedOwner').find(':selected').val(),
                     type: 'GET',
                     success: function(response) {
+                        var dataCopy = jQuery.extend(true, {}, response.result);
                         tableHeader = response.colHeaders
                         var handsontableElement = document.querySelector('#handsontable');
                         var handsontableElementContainer = handsontableElement.parentNode;
@@ -51,6 +52,37 @@ $(function() {
                                     ]
                         };
                         handsontable = new Handsontable(handsontableElement, handsontableSettings);
+                        handsontable.addHook('afterChange', afterChange);
+                        function afterChange(changes, source) {
+                         if (source == 'edit' || source == 'autofill') {
+                          $.each(changes, function(index, element) {
+                              var rowIndex = element[0];
+                              var columnIndex = element[1];        
+                              var oldValue = element[2];
+                              var newValue = element[3];
+                              var cellChange = {
+                                  'rowIndex': rowIndex,
+                                  'columnIndex': columnIndex
+                              }; 
+                              if (oldValue != newValue) {
+                                  var cellProperties = handsontable.getCellMeta(rowIndex, handsontable.propToCol(columnIndex));
+                                  if (newValue != dataCopy[rowIndex][columnIndex]) {
+                                      cellProperties.renderer = function(instance, td, row ,col, prop, value, cellProperties) {
+                                        Handsontable.renderers.TextRenderer.apply(this, arguments);
+                                        td.style.backgroundColor = '#FFA500';
+                                      };
+                                  }
+                                  else {
+                                      cellProperties.renderer = function(instance, td, row ,col, prop, value, cellProperties) {
+                                        Handsontable.renderers.TextRenderer.apply(this, arguments);
+                                        td.style.backgroundColor = 'white';
+                                      };;
+                                  }
+                                  handsontable.render();
+                              }
+                          });
+                         }
+                        }
                         $('#loading').hide();
                     },
                     error: function(error) {
@@ -76,6 +108,7 @@ $(function() {
                         url: '/enermod/api/postToFact?editeddata='+JSON.stringify(handsontable.getData())+'&header='+JSON.stringify(tableHeader)+'&model='+$('#selectedModel').find(":selected").val()+'&sm='+$('#selectedSubModel').find(':selected').val()+'&fnname='+$('#selectedFunction').find(':selected').val()+'&mainversion='+$('#selectedVersion').find(':selected').val(),
                         type: 'GET',
                         success: function(response) {
+                                $('#clipboard').empty();
                                 document.getElementById('clipboard').innerHTML += response;
                         },
                         error: function(error){
@@ -86,7 +119,7 @@ $(function() {
                     setTimeout(function(){
                         $('#loading').hide();
                         tabChange(tab_proceed_status=true, parseInt(num) + 2);
-                    }, 3000);
+                    }, 5000);
                     return;
                 }
               }).modal('show');
@@ -104,7 +137,7 @@ $(function() {
             return false;   
         }   
     }    
-    
+
     //Drop Down effect
     $('.ui.dropdown').dropdown({
         onChange: function (value, text, $selectedItem) {

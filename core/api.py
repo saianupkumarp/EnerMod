@@ -22,7 +22,7 @@ def get_dists_modelType():
     listModelType = models.db.session.query(models.ModelType.MODEL_TYPE_LONG_NAME.distinct().label('MODEL_TYPE_LONG_NAME'))
     return jsonify( DistModelType = [row.MODEL_TYPE_LONG_NAME.strip() for row in listModelType.all()])
 
-@rest_api.route('/getTableData')
+@rest_api.route('/getTableData',  methods=['GET'])
 def get_table_data():
     columns = [x.encode('utf-8') for x in request.args.get('cols').split(',')]
     schemaFilter = [dimDetails[k] for k in columns]

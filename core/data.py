@@ -3,6 +3,11 @@ from datetime import datetime
 import copy
 import collections
 
+def get_dist_username():
+    query = models.db.session.query(models.FactEntitlements.USERNAME.distinct().label('USERNAME'))
+    result = [row.USERNAME for row in query.all()]
+    return result
+
 def get_dist_modelType():
     query = models.db.session.query(models.ModelType.MODEL_TYPE_LONG_NAME.distinct().label('MODEL_TYPE_LONG_NAME'))
     result = [row.MODEL_TYPE_LONG_NAME.strip() for row in query.all()]
