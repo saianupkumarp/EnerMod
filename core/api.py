@@ -28,7 +28,7 @@ def get_table_data():
     schemaFilter = [dimDetails[k] for k in columns]
     schemaFilter.append('VALUE')
     schemaFilter.append('UNIT')
-    listTbldata = models.FactEntitlements.query.filter(models.FactEntitlements.USERNAME==current_user.username, \
+    listTbldata = models.FactEntitlements.query.filter(models.FactEntitlements.USERNAME==request.args.get('user'), \
                         models.FactEntitlements.MODEL_ID==data.get_model_type_id(request.args.get('model')), \
                             models.FactEntitlements.SM_ID==data.get_sub_model_id(request.args.get('sm')), \
                                 models.FactEntitlements.FUNC_ID==data.get_function_id(request.args.get('fnname')), \
