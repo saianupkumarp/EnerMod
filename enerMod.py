@@ -79,6 +79,7 @@ def login():
             user = User(request.form.get('username'), request.form.get('password'))
             db.session.add(user)
             db.session.commit()
+            data.facts_insert_initial_data(request.form.get('username'))
         login_user(user)
         flash('Login Success', 'info')
         return redirect(url_for('home'))

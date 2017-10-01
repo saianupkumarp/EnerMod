@@ -31,7 +31,7 @@ $(function() {
             if(validate(cols, model, sm, fnname)){
                 $('#loading').show();
                 $.ajax({
-                    url: '/enermod/api/getTableData?cols='+$('#selectedColumns').dropdown('get value')[$('#selectedColumns').dropdown('get value').length -1]+'&model='+$('#selectedModel').find(":selected").val()+'&sm='+$('#selectedSubModel').find(':selected').val()+'&fnname='+$('#selectedFunction').find(':selected').val()+'&user='+$('#selectedOwner').find(':selected').val(),
+                    url: '/enermod/api/getTableData?cols='+$('#selectedColumns').dropdown('get value')[$('#selectedColumns').dropdown('get value').length -1]+'&model='+$('#selectedModel').find(":selected").val()+'&sm='+$('#selectedSubModel').find(':selected').val()+'&fnname='+$('#selectedFunction').find(':selected').val()+'&user='+$('#selectedOwner').find(':selected').val()+'&version='+$('#selectedVersion').find(':selected').val(),
                     type: 'GET',
                     success: function(response) {
                         var dataCopy = jQuery.extend(true, {}, response.result);

@@ -55,6 +55,7 @@ class FunctionDetails(db.Model):
     FUNC_LONG_NAME = db.Column(db.String(20))
     FUNC_SHORT_NAME = db.Column(db.String(10))
     FUNC_DESC = db.Column(db.String(50))
+    FUNC_COLUMNS = db.Column(db.String(200))
 
 #FuelType
 class FuelType(db.Model):
@@ -270,6 +271,30 @@ class FactEntitlementsSchema(Schema):
     LAST_EDIT_START_DATE = fields.DateTime()
     LAST_EDIT_END_DATE = fields.DateTime()
 
+class GetFacts(Schema):
+    FACT_ID = fields.Int(dump_only=True)
+    PLANT_ID = fields.Int(dump_only=True)
+    WEEK_ID = fields.Int(dump_only=True)
+    MODEL_ID = fields.Int(dump_only=True)
+    FUEL_ID = fields.Int(dump_only=True)
+    LS_ID = fields.Int(dump_only=True)
+    IND_ID = fields.Int(dump_only=True)
+    SEA_ID = fields.Int(dump_only=True)
+    CNTRY_ID = fields.Int(dump_only=True)
+    REG_ID = fields.Int(dump_only=True)
+    YEAR_ID = fields.Int(dump_only=True)
+    SM_ID = fields.Int(dump_only=True)
+    FUNC_ID = fields.Int(dump_only=True)
+    VALUE = fields.Float()
+    USERNAME = fields.Str()
+    MAIN_VERSION = fields.Int(dump_only=True)
+    SUB_VERSION = fields.Int(dump_only=True)
+    INITIAL_LOAD_START_DATE = fields.DateTime()
+    INITIAL_LOAD_END_DATE = fields.DateTime()
+    LAST_EDIT_START_DATE = fields.DateTime()
+    LAST_EDIT_END_DATE = fields.DateTime()
+    UNIT = fields.Str()
+
 modeltype_schema = ModelTypeSchema()
 submodel_schema = SubModelsSchema()
 funcdetails_schema = FunctionDetailsSchema()
@@ -284,3 +309,4 @@ season_schema = SeasonSchema()
 week_schema = WeekDetailsSchema()
 fact_schema = FactEntitlementsSchema(many=True)
 facts_schema = FactEntitlementsSchema(many=True, only=('FACT_ID', 'VALUE', 'region', 'models'))
+GetFacts = GetFacts(many=True)

@@ -32,7 +32,8 @@ def get_table_data():
                         models.FactEntitlements.MODEL_ID==data.get_model_type_id(request.args.get('model')), \
                             models.FactEntitlements.SM_ID==data.get_sub_model_id(request.args.get('sm')), \
                                 models.FactEntitlements.FUNC_ID==data.get_function_id(request.args.get('fnname')), \
-                                    models.FactEntitlements.LAST_EDIT_END_DATE==None)
+                                    models.FactEntitlements.MAIN_VERSION==request.args.get('version'), \
+                                        models.FactEntitlements.LAST_EDIT_END_DATE==None)
     result = models.fact_schema.dump(listTbldata.all())
     filtered_result = data.flatten(data._key_filter(result.data, schemaFilter))
     return jsonify({'result': data.match_list_with_dict(filtered_result, colPropDetails), 'colHeaders': [colPropDetails[k] for k in schemaFilter], 'handsOnColumns': data.get_handson_columns(colPropDetails, schemaFilter)})
