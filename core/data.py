@@ -4,8 +4,8 @@ import copy
 import collections
 
 def get_dist_username():
-    query = models.db.session.query(models.FactEntitlements.USERNAME.distinct().label('USERNAME'))
-    result = [row.USERNAME for row in query.all()]
+    query = models.db.session.query(models.FactEntitlements.USERNAME.distinct().label('USERNAME'),models.User).filter(models.FactEntitlements.USERNAME == models.User.username)
+    result = [{'username':row.USERNAME,'fname':row.User.first_name ,'lname':row.User.last_name} for row in query.all()]
     return result
 
 def get_dist_modelType():

@@ -12,9 +12,13 @@ db = SQLAlchemy()
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100))
+    first_name = db.Column(db.String(25))
+    last_name = db.Column(db.String(25))
  
-    def __init__(self, username, password):
+    def __init__(self, username, password, first_name,last_name):
         self.username = username
+        self.first_name=first_name
+        self.last_name=last_name
  
     @staticmethod
     def is_authenticated(self):

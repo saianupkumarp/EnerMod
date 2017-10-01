@@ -85,8 +85,8 @@
                                     </div>
                                     <div class="twelve wide field">
                                         <select class="ui dropdown" name="selectedOwner" id="selectedOwner">
-                                            {% for x in owner %}
-                                                <option data-value="{{x}}" {% if x == current_user.username %} selected="selected" {% endif %} value="{{x}}">{{x}}</option>
+                                            {% for x in owner|sort %}
+                                                <option data-value="{{x.username}}" {% if x.username == current_user.username %} selected="selected" {% endif %} value="{{x.username}}">{{x.fname}} {{x.lname}}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
