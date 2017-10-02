@@ -71,15 +71,17 @@ def login():
             conn.simple_bind_s(
                 'CN=%s,OU=Employees,OU=Managed Users,DC=KAPSARC,DC=ORG' % request.form.get('username'), request.form.get('password')
             )
-            name=conn.search_s( 'CN='+request.form.get('username')+',OU=Employees,OU=Managed Users,DC=KAPSARC,DC=ORG', ldap.SCOPE_SUBTREE, '(objectclass=*)', ['givenName','sn'])
+            name=conn.search_s( 'CN='+request.form.get('username')+',OU=Employees,OU=Managed Users,DC=KAPSARC,DC=ORG', ldap.SCOPE_SUBTREE, '(objectclass=*)', ['givenName','sn','displayName'])
             first_name=name[0][1]['givenName'][0]
             last_name= name[0][1]['sn'][0] 
+            display_name= name[0][1]['displayName'][0] 
+
         except ldap.INVALID_CREDENTIALS:
             flash('Invalid Username or Password', 'error')
             return render_template('login.html', form=form)
         user = User.query.filter_by(username=request.form.get('username')).first()
         if not user:
-            user = User(request.form.get('username'), request.form.get('password'),first_name,last_name)
+            user = User(request.form.get('username'), request.form.get('password'),first_name,last_name,display_name)
             db.session.add(user)
             db.session.commit()
             data.facts_insert_initial_data(request.form.get('username'))
