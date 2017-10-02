@@ -14,11 +14,13 @@ class User(db.Model):
     username = db.Column(db.String(100))
     first_name = db.Column(db.String(25))
     last_name = db.Column(db.String(25))
+    display_name = db.Column(db.String(50))
  
-    def __init__(self, username, password, first_name,last_name):
+    def __init__(self, username, password, first_name,last_name,display_name):
         self.username = username
         self.first_name=first_name
         self.last_name=last_name
+        self.display_name=display_name
  
     @staticmethod
     def is_authenticated(self):

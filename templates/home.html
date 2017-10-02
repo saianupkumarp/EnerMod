@@ -33,7 +33,14 @@
             </a>
             <div class="right menu">
                 <div class="ui dropdown item">
-                    <span class="username" id="username"><i class="user icon"></i>{{ current_user.username }}</span>
+                    <span class="username" id="username">
+                        <i class="user icon"></i>
+                        {% if ',' in current_user.display_name|string %} 
+                            {{current_user.first_name}} {{current_user.last_name}}
+                        {% else %}
+                            {{current_user.display_name}}
+                        {% endif %}
+                    </span>
                     <i class="chevron circle down icon"></i>
                     <div class="menu">
                         <a class="item" id="admin"><i class="setting icon"></i>Admin</a>
@@ -86,7 +93,13 @@
                                     <div class="twelve wide field">
                                         <select class="ui dropdown" name="selectedOwner" id="selectedOwner">
                                             {% for x in owner|sort %}
-                                                <option data-value="{{x.username}}" {% if x.username == current_user.username %} selected="selected" {% endif %} value="{{x.username}}">{{x.fname}} {{x.lname}}</option>
+                                                <option data-value="{{x.username}}" {% if x.username == current_user.username %} selected="selected" {% endif %} value="{{x.username}}"> 
+                                                    {% if ',' in x.dname|string %} 
+                                                        {{x.fname}} {{x.lname}}
+                                                    {% else %}
+                                                        {{x.dname}}
+                                                    {% endif %}
+                                                </option>
                                             {% endfor %}
                                         </select>
                                     </div>
