@@ -77,6 +77,18 @@
                                 </div>
                                 <div class="inline fields">
                                     <div class="five wide field">
+                                        <label>Country:</label>
+                                    </div>
+                                    <div class="twelve wide field">
+                                        <select class="ui dropdown" name="selectedModelCountry" id="selectedModelCountry">
+                                            {% for x in modelcountry %}
+                                                <option data-value="{{x}}" value="{{x}}">{{x}}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="inline fields">
+                                    <div class="five wide field">
                                         <label>Data:</label>
                                     </div>
                                     <div class="twelve wide field">

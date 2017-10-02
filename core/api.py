@@ -33,14 +33,15 @@ def get_table_data():
                             models.FactEntitlements.SM_ID==data.get_sub_model_id(request.args.get('sm')), \
                                 models.FactEntitlements.FUNC_ID==data.get_function_id(request.args.get('fnname')), \
                                     models.FactEntitlements.MAIN_VERSION==request.args.get('version'), \
-                                        models.FactEntitlements.LAST_EDIT_END_DATE==None)
+                                        models.FactEntitlements.CNTRY_ID==data.get_country_id(request.args.get('country')), \
+                                            models.FactEntitlements.LAST_EDIT_END_DATE==None)
     result = models.fact_schema.dump(listTbldata.all())
     filtered_result = data.flatten(data._key_filter(result.data, schemaFilter))
     return jsonify({'result': data.match_list_with_dict(filtered_result, colPropDetails), 'colHeaders': [colPropDetails[k] for k in schemaFilter], 'handsOnColumns': data.get_handson_columns(colPropDetails, schemaFilter)})
 
 @rest_api.route('/postToFact', methods=['GET', 'POST'])
 def post_fact_data():
-    res = data.fact_insertion(json.loads(request.args.get('header')), json.loads(request.args.get('editeddata')), request.args.get('model'), request.args.get('sm'), request.args.get('fnname'), request.args.get('mainversion'), current_user.username)
+    res = data.fact_insertion(json.loads(request.args.get('header')), json.loads(request.args.get('editeddata')), request.args.get('model'), request.args.get('sm'), request.args.get('fnname'), request.args.get('mainversion'), request.args.get('country'), current_user.username)
     sql_col_list = []
     sql_join_list = []
     sql_where_list = []

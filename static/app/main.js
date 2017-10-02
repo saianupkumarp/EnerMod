@@ -31,7 +31,7 @@ $(function() {
             if(validate(cols, model, sm, fnname)){
                 $('#loading').show();
                 $.ajax({
-                    url: '/enermod/api/getTableData?cols='+$('#selectedColumns').dropdown('get value')[$('#selectedColumns').dropdown('get value').length -1]+'&model='+$('#selectedModel').find(":selected").val()+'&sm='+$('#selectedSubModel').find(':selected').val()+'&fnname='+$('#selectedFunction').find(':selected').val()+'&user='+$('#selectedOwner').find(':selected').val()+'&version='+$('#selectedVersion').find(':selected').val(),
+                    url: '/enermod/api/getTableData?cols='+$('#selectedColumns').dropdown('get value')[$('#selectedColumns').dropdown('get value').length -1]+'&model='+$('#selectedModel').find(":selected").val()+'&sm='+$('#selectedSubModel').find(':selected').val()+'&fnname='+$('#selectedFunction').find(':selected').val()+'&user='+$('#selectedOwner').find(':selected').val()+'&version='+$('#selectedVersion').find(':selected').val()+'&country='+$('#selectedModelCountry').find(':selected').val(),
                     type: 'GET',
                     success: function(response) {
                         var dataCopy = jQuery.extend(true, {}, response.result);
@@ -105,7 +105,7 @@ $(function() {
                 onApprove : function() {
                     $('#loading').show();
                     $.ajax({
-                        url: '/enermod/api/postToFact?editeddata='+JSON.stringify(handsontable.getData())+'&header='+JSON.stringify(tableHeader)+'&model='+$('#selectedModel').find(":selected").val()+'&sm='+$('#selectedSubModel').find(':selected').val()+'&fnname='+$('#selectedFunction').find(':selected').val()+'&mainversion='+$('#selectedVersion').find(':selected').val(),
+                        url: '/enermod/api/postToFact?editeddata='+JSON.stringify(handsontable.getData())+'&header='+JSON.stringify(tableHeader)+'&model='+$('#selectedModel').find(":selected").val()+'&sm='+$('#selectedSubModel').find(':selected').val()+'&fnname='+$('#selectedFunction').find(':selected').val()+'&mainversion='+$('#selectedVersion').find(':selected').val()+'&country='+$('#selectedModelCountry').find(':selected').val(),
                         type: 'GET',
                         success: function(response) {
                                 $('#clipboard').empty();
@@ -119,7 +119,7 @@ $(function() {
                     setTimeout(function(){
                         $('#loading').hide();
                         tabChange(tab_proceed_status=true, parseInt(num) + 2);
-                    }, 5000);
+                    }, 9000);
                     return;
                 }
               }).modal('show');
