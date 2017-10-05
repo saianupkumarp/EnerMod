@@ -9,8 +9,10 @@ def get_dist_username():
     return result
 
 def get_dist_modelType():
-    query = models.db.session.query(models.ModelType.MODEL_TYPE_LONG_NAME.distinct().label('MODEL_TYPE_LONG_NAME'))
-    result = [row.MODEL_TYPE_LONG_NAME.strip() for row in query.all()]
+    # query = models.db.session.query(models.ModelType.MODEL_TYPE_LONG_NAME.distinct().label('MODEL_TYPE_LONG_NAME'))
+    # result = [row.MODEL_TYPE_LONG_NAME.strip() for row in query.all()]
+    query = models.db.session.query(models.FactEntitlements.MODEL_ID.distinct().label('MODEL_ID'),models.ModelType).filter(models.FactEntitlements.MODEL_ID == models.ModelType.MODEL_ID)
+    result = [{'modelid':row.MODEL_ID,'modelName':row.ModelType.MODEL_TYPE_LONG_NAME} for row in query.all()]
     return result
 
 def get_dist_sub_models():

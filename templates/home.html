@@ -69,8 +69,9 @@
                                     </div>
                                     <div class="twelve wide field">
                                         <select class="ui dropdown" name="selectedModel" id="selectedModel">
+                                            <option value="">Select Model</option>
                                             {% for x in modeltype %}
-                                                <option data-value="{{x}}" value="{{x}}">{{x}}</option>
+                                                <option data-value="{{x.modelid}}" value="{{x.modelid}}">{{x.modelName}}</option>
                                             {% endfor %}
                                         </select>
                                     </div>
@@ -81,9 +82,10 @@
                                     </div>
                                     <div class="twelve wide field">
                                         <select class="ui dropdown" name="selectedModelCountry" id="selectedModelCountry">
-                                            {% for x in modelcountry %}
-                                                <option data-value="{{x}}" value="{{x}}">{{x}}</option>
-                                            {% endfor %}
+                                            <option value="">Select Country</option>
+                                            <!-- {% for x in modelcountry %} -->
+                                                <!-- <option data-value="{{x}}" value="{{x}}">{{x}}</option> -->
+                                            <!-- {% endfor %} -->
                                         </select>
                                     </div>
                                 </div>
@@ -104,15 +106,16 @@
                                     </div>
                                     <div class="twelve wide field">
                                         <select class="ui dropdown" name="selectedOwner" id="selectedOwner">
-                                            {% for x in owner|sort %}
+                                                <option value="">Select User</option>
+                                            <!-- {% for x in owner|sort %} 
                                                 <option data-value="{{x.username}}" {% if x.username == current_user.username %} selected="selected" {% endif %} value="{{x.username}}"> 
-                                                    {% if ',' in x.dname|string %} 
+                                                     {% if ',' in x.dname|string %} 
                                                         {{x.fname}} {{x.lname}}
                                                     {% else %}
                                                         {{x.dname}}
-                                                    {% endif %}
+                                                    {% endif %} 
                                                 </option>
-                                            {% endfor %}
+                                                 {% endfor %} -->
                                         </select>
                                     </div>
                                 </div>
@@ -123,9 +126,9 @@
                                     <div class="twelve wide field">
                                         <select class="ui dropdown" name="selectedVersion" id="selectedVersion">
                                             <option value="">Select Version</option>
-                                            {% for x in mainversionList %}
+                                            <!-- {% for x in mainversionList %}
                                                 <option data-value="{{x}}">{{x}}</option>
-                                            {% endfor %}
+                                            {% endfor %} -->
                                         </select>
                                     </div>
                                 </div>
@@ -136,9 +139,9 @@
                                     <div class="twelve wide field">
                                         <select class="ui dropdown" name="selectedSubModel" id="selectedSubModel">
                                             <option value="">Select Sub-Model</option>
-                                            {% for x in submodels %}
+                                            <!-- {% for x in submodels %}
                                                 <option data-value="{{x}}">{{x}}</option>
-                                            {% endfor %}
+                                            {% endfor %} -->
                                         </select>
                                     </div>
                                 </div>
@@ -149,9 +152,9 @@
                                     <div class="twelve wide field">
                                         <select class="ui dropdown" name="selectedFunction" id="selectedFunction">
                                             <option value="">Select Function</option>
-                                            {% for x in funclist %}
+                                            <!-- {% for x in funclist %}
                                                 <option data-value="{{x}}">{{x}}</option>
-                                            {% endfor %}
+                                            {% endfor %} -->
                                         </select>
                                     </div>
                                 </div>
@@ -162,11 +165,11 @@
                                     <div class="twelve wide field">
                                         <select class="ui fluid dropdown" id="selectedColumns" multiple>
                                             <option value="">Select the columns to edit</option>
-                                            <option value="YEAR_ID">Year</option>
+                                            <!-- <option value="YEAR_ID">Year</option>
                                             <option value="REG_ID">Region</option>
                                             <option value="FUEL_ID">Fuel Type</option>
                                             <option value="SEA_ID">Season</option>
-                                            <option value="CNTRY_ID">Country</option>
+                                            <option value="CNTRY_ID">Country</option> -->
                                         </select>
                                     </div>
                                 </div>

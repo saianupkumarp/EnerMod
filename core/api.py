@@ -22,6 +22,61 @@ def get_dists_modelType():
     listModelType = models.db.session.query(models.ModelType.MODEL_TYPE_LONG_NAME.distinct().label('MODEL_TYPE_LONG_NAME'))
     return jsonify( DistModelType = [row.MODEL_TYPE_LONG_NAME.strip() for row in listModelType.all()])
 
+@rest_api.route('/getdistModelCountry',  methods=['GET'])
+def dists_modelCountry():
+    query = models.db.session.query(models.FactEntitlements.CNTRY_ID.distinct().label('CNTRY_ID'), 
+                                        models.ModelCountry).filter(models.FactEntitlements.MODEL_ID == request.args.get('modelTypeID'),\
+                                                                    models.FactEntitlements.CNTRY_ID == models.ModelCountry.CNTRY_ID)
+    return jsonify( modelCountry = [{'cntryid':row.CNTRY_ID,'cntryName':row.ModelCountry.CNTRY_NAME.strip()} for row in query.all()])
+
+@rest_api.route('/getdistUsers',  methods=['GET'])
+def dists_users():
+    query = models.db.session.query(models.FactEntitlements.USERNAME.distinct().label('USERNAME'), 
+                                        models.User).filter(models.FactEntitlements.MODEL_ID == request.args.get('modelTypeID'),\
+                                                            models.FactEntitlements.CNTRY_ID == request.args.get('modelCountry'),\
+                                                            models.FactEntitlements.USERNAME == models.User.username)
+    return jsonify( users = [{'username':row.USERNAME.strip(),'fname':row.User.first_name.strip() ,'lname':row.User.last_name.strip(),'dname':row.User.display_name.strip()} for row in query.all()])
+
+@rest_api.route('/getdistmainversion',  methods=['GET'])
+def dists_main_version():
+    query = models.db.session.query(models.FactEntitlements.MAIN_VERSION.distinct().label('MAIN_VERSION')).filter(models.FactEntitlements.MODEL_ID == request.args.get('modelTypeID'),\
+                                                            models.FactEntitlements.CNTRY_ID == request.args.get('modelCountry'),\
+                                                            models.FactEntitlements.USERNAME == request.args.get('owner'))
+    return jsonify( mainversion = [{'version':row.MAIN_VERSION } for row in query.all()])
+
+@rest_api.route('/getdistsubmodel',  methods=['GET'])
+def dists_subModel():
+    query = models.db.session.query(models.FactEntitlements.SM_ID.distinct().label('SM_ID'), 
+                                        models.SubModels).filter(models.FactEntitlements.MODEL_ID == request.args.get('modelTypeID'),\
+                                                            models.FactEntitlements.CNTRY_ID == request.args.get('modelCountry'),\
+                                                            models.FactEntitlements.USERNAME == request.args.get('owner'),\
+                                                            models.FactEntitlements.MAIN_VERSION == request.args.get('version'),\
+                                                            models.FactEntitlements.SM_ID == models.SubModels.SM_ID)
+    return jsonify( submodel = [{'submodelid':row.SM_ID,'submodelName':row.SubModels.SM_LONG_NAME.strip() } for row in query.all()])
+
+@rest_api.route('/getdistfunc',  methods=['GET'])
+def dists_func():
+    query = models.db.session.query(models.FactEntitlements.FUNC_ID.distinct().label('FUNC_ID'), 
+                                        models.FunctionDetails).filter(models.FactEntitlements.MODEL_ID == request.args.get('modelTypeID'),\
+                                                            models.FactEntitlements.CNTRY_ID == request.args.get('modelCountry'),\
+                                                            models.FactEntitlements.USERNAME == request.args.get('owner'),\
+                                                            models.FactEntitlements.MAIN_VERSION == request.args.get('version'),\
+                                                            models.FactEntitlements.SM_ID == request.args.get('subModel'),\
+                                                            models.FactEntitlements.FUNC_ID == models.FunctionDetails.FUNC_ID)
+    return jsonify( func = [{'funcid':row.FUNC_ID,'funcName':row.FunctionDetails.FUNC_LONG_NAME } for row in query.all()])
+
+@rest_api.route('/getdistcolumns',  methods=['GET'])
+def dists_columns():
+    query = models.db.session.query(models.FactEntitlements.FUNC_ID.distinct().label('FUNC_ID'), 
+                                        models.FunctionDetails).filter(models.FactEntitlements.MODEL_ID == request.args.get('modelTypeID'),\
+                                                            models.FactEntitlements.CNTRY_ID == request.args.get('modelCountry'),\
+                                                            models.FactEntitlements.USERNAME == request.args.get('owner'),\
+                                                            models.FactEntitlements.MAIN_VERSION == request.args.get('version'),\
+                                                            models.FactEntitlements.SM_ID == request.args.get('subModel'),\
+                                                            models.FactEntitlements.FUNC_ID == request.args.get('func'),\
+                                                            models.FactEntitlements.FUNC_ID == models.FunctionDetails.FUNC_ID)
+    return jsonify( columns = [row.FunctionDetails.FUNC_COLUMNS for row in query.all()])
+
 @rest_api.route('/getTableData',  methods=['GET'])
 def get_table_data():
     columns = [x.encode('utf-8') for x in request.args.get('cols').split(',')]
@@ -29,11 +84,11 @@ def get_table_data():
     schemaFilter.append('VALUE')
     schemaFilter.append('UNIT')
     listTbldata = models.FactEntitlements.query.filter(models.FactEntitlements.USERNAME==request.args.get('user'), \
-                        models.FactEntitlements.MODEL_ID==data.get_model_type_id(request.args.get('model')), \
-                            models.FactEntitlements.SM_ID==data.get_sub_model_id(request.args.get('sm')), \
-                                models.FactEntitlements.FUNC_ID==data.get_function_id(request.args.get('fnname')), \
+                        models.FactEntitlements.MODEL_ID==request.args.get('model'), \
+                            models.FactEntitlements.SM_ID==request.args.get('sm'), \
+                                models.FactEntitlements.FUNC_ID==request.args.get('fnname'), \
                                     models.FactEntitlements.MAIN_VERSION==request.args.get('version'), \
-                                        models.FactEntitlements.CNTRY_ID==data.get_country_id(request.args.get('country')), \
+                                        models.FactEntitlements.CNTRY_ID==request.args.get('country'), \
                                             models.FactEntitlements.LAST_EDIT_END_DATE==None)
     result = models.fact_schema.dump(listTbldata.all())
     filtered_result = data.flatten(data._key_filter(result.data, schemaFilter))

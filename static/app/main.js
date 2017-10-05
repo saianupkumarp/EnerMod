@@ -149,6 +149,156 @@ $(function() {
         on: "click"
     });
 
-    
+  
+   //Selected Model Changed
+   selectedModel.onchange = function () {
+    $.ajax({
+        url:  '/enermod/api/getdistModelCountry?modelTypeID='+$('#selectedModel').find(':selected').val(),
+        type:  'GET',
+        success: function(response){
+            //Clear 
+            $('#selectedModelCountry').dropdown('restore defaults');
+            selectedModelCountry.length = 1; // remove all options bar first
+            selectedOwner.length = 1; // remove all options bar first
+            selectedVersion.length = 1; // remove all options bar first
+            selectedSubModel.length = 1; // remove all options bar first
+            selectedFunction.length = 1; // remove all options bar first
+            selectedColumns.length = 1; // remove all options bar first
+
+            var modelCountry=response['modelCountry'];
+            //Load Country
+            for (var i in modelCountry) {
+                selectedModelCountry.options[selectedModelCountry.options.length] = new Option(modelCountry[i]['cntryName'], modelCountry[i]['cntryid']);
+            }
+        }
+    });
+}
+//Selected Country Changed
+selectedModelCountry.onchange = function () {
+    $.ajax({
+        url:  '/enermod/api/getdistUsers?modelTypeID='+$('#selectedModel').find(':selected').val()
+                                        +'&modelCountry='+$('#selectedModelCountry').find(':selected').val(),
+        type:  'GET',
+        success: function(response){
+            //Clear 
+            $('#selectedOwner').dropdown('restore defaults');
+            selectedOwner.length = 1; // remove all options bar first
+            selectedVersion.length = 1; // remove all options bar first
+            selectedSubModel.length = 1; // remove all options bar first
+            selectedFunction.length = 1; // remove all options bar first
+            selectedColumns.length = 1; // remove all options bar first
+
+            var users=response['users'];
+            //Load Users
+            for (var i in users) {
+                var name= null;
+                var selected=false;
+
+                if (users[i]['dname'].includes(","))
+                    name=users[i]['fname'] +" "+users[i]['lname'];
+                else 
+                    name=users[i]['dname'];
+
+                // if (users[i]['username'] == 'hamdanl')
+                //     console.log('ashaskh');
+                //     // selectedOwner.options[selectedOwner.options.length] = new Option(name, users[i]['username'],true,true);
+                // else 
+                selectedOwner.options[selectedOwner.options.length] = new Option(name, users[i]['username']);
+            }
+        }
+    });
+}
+//Selected User Changed
+selectedOwner.onchange = function () {
+    $.ajax({
+        url:  '/enermod/api/getdistmainversion?modelTypeID='+$('#selectedModel').find(':selected').val()
+                                        +'&modelCountry='+$('#selectedModelCountry').find(':selected').val()
+                                        +'&owner='+$('#selectedOwner').find(':selected').val(),
+        type:  'GET',
+        success: function(response){
+            //Clear 
+            $('#selectedVersion').dropdown('restore defaults');
+            selectedVersion.length = 1; // remove all options bar first
+            selectedSubModel.length = 1; // remove all options bar first
+            selectedFunction.length = 1; // remove all options bar first
+            selectedColumns.length = 1; // remove all options bar first
+
+            var mainVersion=response['mainversion'];
+            //Load Versions
+            for (var i in mainVersion.reverse()) {
+                selectedVersion.options[selectedVersion.options.length] = new Option(mainVersion[i]['version'], mainVersion[i]['version']);
+            }
+        }
+    });
+}
+//Selected Version Changed
+selectedVersion.onchange = function () {
+    $.ajax({
+        url:  '/enermod/api/getdistsubmodel?modelTypeID='+$('#selectedModel').find(':selected').val()
+                                        +'&modelCountry='+$('#selectedModelCountry').find(':selected').val()
+                                        +'&owner='+$('#selectedOwner').find(':selected').val()
+                                        +'&version='+$('#selectedVersion').find(':selected').val(),
+        type:  'GET',
+        success: function(response){
+            //Clear 
+            $('#selectedSubModel').dropdown('restore defaults');
+            selectedSubModel.length = 1; // remove all options bar first
+            selectedFunction.length = 1; // remove all options bar first
+            selectedColumns.length = 1; // remove all options bar first
+        
+            var subModel=response['submodel'];
+            //Load Sub models
+            for (var i in subModel) {
+                selectedSubModel.options[selectedSubModel.options.length] = new Option(subModel[i]['submodelName'], subModel[i]['submodelid']);
+            }
+        }
+    });
+}
+//Selected SubModel Changed
+selectedSubModel.onchange = function () {
+    $.ajax({
+        url:  '/enermod/api/getdistfunc?modelTypeID='+$('#selectedModel').find(':selected').val()
+                                        +'&modelCountry='+$('#selectedModelCountry').find(':selected').val()
+                                        +'&owner='+$('#selectedOwner').find(':selected').val()
+                                        +'&version='+$('#selectedVersion').find(':selected').val()
+                                        +'&subModel='+$('#selectedSubModel').find(':selected').val(),
+        type:  'GET',
+        success: function(response){
+            //Clear 
+            $('#selectedFunction').dropdown('restore defaults');
+            selectedFunction.length = 1; // remove all options bar first
+            selectedColumns.length = 1; // remove all options bar first
+        
+            var func=response['func'];
+            //Load Functions
+            for (var i in func) {
+                selectedFunction.options[selectedFunction.options.length] = new Option(func[i]['funcName'], func[i]['funcid']);
+            }
+        }
+    });
+}
+//Selected Function Changed
+selectedFunction.onchange = function () {
+    $.ajax({
+        url:  '/enermod/api/getdistcolumns?modelTypeID='+$('#selectedModel').find(':selected').val()
+                                        +'&modelCountry='+$('#selectedModelCountry').find(':selected').val()
+                                        +'&owner='+$('#selectedOwner').find(':selected').val()
+                                        +'&version='+$('#selectedVersion').find(':selected').val()
+                                        +'&subModel='+$('#selectedSubModel').find(':selected').val()
+                                        +'&func='+$('#selectedFunction').find(':selected').val(),
+        type:  'GET',
+        success: function(response){
+            //Clear 
+            $('#selectedColumns').dropdown('restore defaults');
+            selectedColumns.length = 1; // remove all options bar first
+            
+            var cols=JSON.parse(response['columns']);
+            //Load Columns
+            for (var i in cols) {
+                selectedColumns.options[selectedColumns.options.length] = new Option(cols[i]['colName'], cols[i]['colID']);
+            }
+        }
+    });
+}
 
 });
