@@ -206,13 +206,13 @@ def get_handson_columns(colpros, colFiter):
 def fact_insertion(key, values, modelName, subModel, funcName, mainVerion, country, username):
     utcNow = datetime.utcnow()
     #Updating the Last End Date
-    factsUpdate = models.FactEntitlements.query.filter_by(CNTRY_ID=get_country_id(country),MODEL_ID=get_model_type_id(modelName),SM_ID=get_sub_model_id(subModel),FUNC_ID=get_function_id(funcName),MAIN_VERSION=mainVerion,USERNAME=username,LAST_EDIT_END_DATE=None).update({"LAST_EDIT_END_DATE": utcNow})
+    factsUpdate = models.FactEntitlements.query.filter_by(CNTRY_ID=country,MODEL_ID=modelName,SM_ID=subModel,FUNC_ID=funcName,MAIN_VERSION=mainVerion,USERNAME=username,LAST_EDIT_END_DATE=None).update({"LAST_EDIT_END_DATE": utcNow})
     models.db.session.commit()
     retdict = {}
     for val in values:
         retdict.update(dict(zip(key, val)))
         #Insert new records with Last Start Date
-        factIns = models.FactEntitlements(CNTRY_ID=get_country_id(country),UNIT=retdict.get('Unit of Measure'),YEAR_ID=get_year_id(retdict.get('Year')),SEA_ID=get_sea_id(retdict.get('Season')),WEEK_ID=get_week_id(retdict.get('Week')),FUEL_ID=get_fuel_id(retdict.get('Fuel Type')),LS_ID=get_ls_id(retdict.get('Load Segment')),REG_ID=get_reg_id(retdict.get('Region')),IND_ID=get_ind_id(retdict.get('Indicator')),PLANT_ID=get_plant_id(retdict.get('Plant Type')),VALUE=retdict.get('Value'),MODEL_ID=get_model_type_id(modelName),SM_ID=get_sub_model_id(subModel),FUNC_ID=get_function_id(funcName),MAIN_VERSION=mainVerion,USERNAME=username,LAST_EDIT_START_DATE=utcNow)
+        factIns = models.FactEntitlements(CNTRY_ID=country,UNIT=retdict.get('Unit of Measure'),YEAR_ID=retdict.get('Year'),SEA_ID=retdict.get('Season'),WEEK_ID=retdict.get('Week'),FUEL_ID=retdict.get('Fuel Type'),LS_ID=retdict.get('Load Segment'),REG_ID=retdict.get('Region'),IND_ID=retdict.get('Indicator'),PLANT_ID=retdict.get('Plant Type'),VALUE=retdict.get('Value'),MODEL_ID=modelName,SM_ID=subModel,FUNC_ID=funcName,MAIN_VERSION=mainVerion,USERNAME=username,LAST_EDIT_START_DATE=utcNow)
         models.db.session.add(factIns)
         models.db.session.commit()
     return "success"
