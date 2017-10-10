@@ -52,7 +52,29 @@ $(function() {
                                     ]
                         };
                         handsontable = new Handsontable(handsontableElement, handsontableSettings);
-                        handsontable.addHook('afterChange', afterChange);
+                        handsontable.addHook('beforeChange', beforeChange);
+                        
+                        var ch=true;
+                        function beforeChange(changes, source) {
+                            if (source == 'edit' || source == 'autofill') {
+                                $.each(changes, function(index, element) {
+                                console.log(changes);
+                                    if (element[3]==null || element[3]<=0){
+                                        alert("Please enter Value greater than Zero.");
+                                        ch= false;    
+                                    }
+                                    else
+                                        ch= true; 
+                                });
+                                if (!ch)
+                                    return false;
+                            }
+                        
+                        }
+                        if (ch)
+                            {
+                                handsontable.addHook('afterChange', afterChange);
+                            }
                         function afterChange(changes, source) {
                          if (source == 'edit' || source == 'autofill') {
                           $.each(changes, function(index, element) {
