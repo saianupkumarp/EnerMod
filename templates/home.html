@@ -105,6 +105,7 @@
                                         <label>User:</label>
                                     </div>
                                     <div class="twelve wide field">
+                                        <input name="user" id="user" value={{current_user.username}} type="hidden">
                                         <select class="ui dropdown" name="selectedOwner" id="selectedOwner">
                                                 <option value="">Select User</option>
                                             <!-- {% for x in owner|sort %} 
@@ -163,7 +164,7 @@
                                         <label>Columns:</label>
                                     </div>
                                     <div class="twelve wide field">
-                                        <select class="ui fluid dropdown" id="selectedColumns" multiple>
+                                        <select class="ui fluid dropdown" id="selectedColumns" multiple disabled>
                                             <option value="">Select the columns to edit</option>
                                             <!-- <option value="YEAR_ID">Year</option>
                                             <option value="REG_ID">Region</option>
