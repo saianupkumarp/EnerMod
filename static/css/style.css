@@ -117,10 +117,10 @@ a:hover{
 }
 /* pattern (login page)*/
 .pattern{
-   position: absolute;
-   height: 110%;
-   box-shadow: 1px 1px 15px #888888;
-   overflow: hidden;
+    position:fixed; 
+    height:100%;
+    box-shadow: 1px 1px 15px #888888;
+    overflow: hidden;
 }
 /* Page Header */
 
