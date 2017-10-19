@@ -233,11 +233,15 @@ a:hover{
     color: #48AC62;
     text-align: center;
     display: block;
+    pointer-events: none;
+    cursor: default;
 }
 .ui.tabular.menu .active.item{
     background-color: #7E7F82;
     color: #fff;
     border-bottom-color: transparent;
+    pointer-events: none;
+    cursor: default;
 }
 .tab-header{
     height:45px;
