@@ -212,7 +212,7 @@ def fact_insertion(key, values, modelName, subModel, funcName, mainVerion, count
     for val in values:
         retdict.update(dict(zip(key, val)))
         #Insert new records with Last Start Date
-        factIns = models.FactEntitlements(CNTRY_ID=country,UNIT=retdict.get('Unit of Measure'),YEAR_ID=retdict.get('Year'),SEA_ID=retdict.get('Season'),WEEK_ID=retdict.get('Week'),FUEL_ID=retdict.get('Fuel Type'),LS_ID=retdict.get('Load Segment'),REG_ID=retdict.get('Region'),IND_ID=retdict.get('Indicator'),PLANT_ID=retdict.get('Plant Type'),VALUE=retdict.get('Value'),MODEL_ID=modelName,SM_ID=subModel,FUNC_ID=funcName,MAIN_VERSION=mainVerion,USERNAME=username,LAST_EDIT_START_DATE=utcNow)
+        factIns = models.FactEntitlements(CNTRY_ID=country,UNIT=retdict.get('Unit of Measure'),YEAR_ID=retdict.get('Year'),SEA_ID=retdict.get('Season'),WEEK_ID=get_week_id(retdict.get('Week')),FUEL_ID=get_fuel_id(retdict.get('Fuel Type')),LS_ID=get_ls_id(retdict.get('Load Segment')),IND_ID=get_ind_id(retdict.get('Indicator')),PLANT_ID=get_plant_id(retdict.get('Plant Type')),VALUE=retdict.get('Value'),MODEL_ID=modelName,SM_ID=subModel,FUNC_ID=funcName,MAIN_VERSION=mainVerion,USERNAME=username,LAST_EDIT_START_DATE=utcNow)
         models.db.session.add(factIns)
         models.db.session.commit()
     return "success"

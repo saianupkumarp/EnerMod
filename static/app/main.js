@@ -132,6 +132,8 @@ $(function() {
                     promised.done(function(response){
                                 $('#clipboard').empty();
                                 document.getElementById('clipboard').innerHTML += response;
+                                $('#loading').hide();
+                                tabChange(tab_proceed_status=true, parseInt(num) + 2);
                     }).fail(function(error) {
                             $('#loading').hide();
                             console.log(error);

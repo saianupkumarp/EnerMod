@@ -63,7 +63,7 @@ def dists_func():
                                                             models.FactEntitlements.MAIN_VERSION == request.args.get('version'),\
                                                             models.FactEntitlements.SM_ID == request.args.get('subModel'),\
                                                             models.FactEntitlements.FUNC_ID == models.FunctionDetails.FUNC_ID)
-    return jsonify( func = [{'funcid':row.FUNC_ID,'funcName':row.FunctionDetails.FUNC_LONG_NAME } for row in query.all()])
+    return jsonify( func = [{'funcid':row.FUNC_ID,'funcName':row.FunctionDetails.FUNC_LONG_NAME.strip() } for row in query.all()])
 
 @rest_api.route('/getdistcolumns',  methods=['GET'])
 def dists_columns():
@@ -75,7 +75,7 @@ def dists_columns():
                                                             models.FactEntitlements.SM_ID == request.args.get('subModel'),\
                                                             models.FactEntitlements.FUNC_ID == request.args.get('func'),\
                                                             models.FactEntitlements.FUNC_ID == models.FunctionDetails.FUNC_ID)
-    return jsonify( columns = [row.FunctionDetails.FUNC_COLUMNS for row in query.all()])
+    return jsonify( columns = [row.FunctionDetails.FUNC_COLUMNS.strip() for row in query.all()])
 
 @rest_api.route('/getTableData',  methods=['GET'])
 def get_table_data():
