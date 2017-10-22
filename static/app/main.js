@@ -60,8 +60,10 @@ $(function() {
                             if (source == 'edit' || source == 'autofill') {
                                 $.each(changes, function(index, element) {
                                 console.log(changes);
-                                    if (element[3]==null || element[3]<=0){
-                                        alert("Please enter Value greater than Zero.");
+                                    if (element[3]==null || element[3]<0){
+                                        // alert("Please enter Value greater than or equals to Zero.");
+                                        $('.mini.modal')
+                                        .modal('show');
                                         ch= false;    
                                     }
                                     else

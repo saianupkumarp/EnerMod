@@ -1,0 +1,119 @@
+<div class="tab-header">
+    <i class="file text outline icon"></i>Version & Column Selector
+</div>
+<div class="tab-content center">
+    <form class="ui form" method="POST" action="edit"> 
+        <div class="inline fields">
+            <div class="five wide field">
+                <label>Model:</label>
+            </div>
+            <div class="twelve wide field">
+                <select class="ui dropdown" name="selectedModel" id="selectedModel">
+                    <option value="">Select Model</option>
+                    {% for x in modeltype %}
+                        <option data-value="{{x.modelid}}" value="{{x.modelid}}">{{x.modelName}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="inline fields">
+            <div class="five wide field">
+                <label>Country:</label>
+            </div>
+            <div class="twelve wide field">
+                <select class="ui dropdown" name="selectedModelCountry" id="selectedModelCountry">
+                    <option value="">Select Country</option>
+                    <!-- {% for x in modelcountry %} -->
+                        <!-- <option data-value="{{x}}" value="{{x}}">{{x}}</option> -->
+                    <!-- {% endfor %} -->
+                </select>
+            </div>
+        </div>
+        <div class="inline fields">
+            <div class="five wide field">
+                <label>Data:</label>
+            </div>
+            <div class="twelve wide field">
+                <div class="ui toggle checkbox toggle2">
+                    <input type="checkbox" checked="checked" name="data" disabled="disabled">
+                    <label>Get Data</label>
+                </div>
+            </div>
+        </div>
+        <div class="inline fields">
+            <div class="five wide field">
+                <label>User:</label>
+            </div>
+            <div class="twelve wide field">
+                <input name="user" id="user" value={{current_user.username}} type="hidden">
+                <select class="ui dropdown" name="selectedOwner" id="selectedOwner">
+                        <option value="">Select User</option>
+                    <!-- {% for x in owner|sort %} 
+                        <option data-value="{{x.username}}" {% if x.username == current_user.username %} selected="selected" {% endif %} value="{{x.username}}"> 
+                                {% if ',' in x.dname|string %} 
+                                {{x.fname}} {{x.lname}}
+                            {% else %}
+                                {{x.dname}}
+                            {% endif %} 
+                        </option>
+                            {% endfor %} -->
+                </select>
+            </div>
+        </div>
+        <div class="inline fields">
+            <div class="five wide field">
+                <label>Version:</label>
+            </div>
+            <div class="twelve wide field">
+                <select class="ui dropdown" name="selectedVersion" id="selectedVersion">
+                    <option value="">Select Version</option>
+                    <!-- {% for x in mainversionList %}
+                        <option data-value="{{x}}">{{x}}</option>
+                    {% endfor %} -->
+                </select>
+            </div>
+        </div>
+        <div class="inline fields">
+            <div class="five wide field">
+                <label>Sub-Model:</label>
+            </div>
+            <div class="twelve wide field">
+                <select class="ui dropdown" name="selectedSubModel" id="selectedSubModel">
+                    <option value="">Select Sub-Model</option>
+                    <!-- {% for x in submodels %}
+                        <option data-value="{{x}}">{{x}}</option>
+                    {% endfor %} -->
+                </select>
+            </div>
+        </div>
+        <div class="inline fields">
+            <div class="five wide field">
+                <label>Function:</label>
+            </div>
+            <div class="twelve wide field">
+                <select class="ui dropdown" name="selectedFunction" id="selectedFunction">
+                    <option value="">Select Function</option>
+                    <!-- {% for x in funclist %}
+                        <option data-value="{{x}}">{{x}}</option>
+                    {% endfor %} -->
+                </select>
+            </div>
+        </div>
+        <div class="inline fields">
+            <div class="five wide field">
+                <label>Columns:</label>
+            </div>
+            <div class="twelve wide field">
+                <select class="ui fluid dropdown" id="selectedColumns" multiple disabled>
+                    <option value="">Select the columns to edit</option>
+                    <!-- <option value="YEAR_ID">Year</option>
+                    <option value="REG_ID">Region</option>
+                    <option value="FUEL_ID">Fuel Type</option>
+                    <option value="SEA_ID">Season</option>
+                    <option value="CNTRY_ID">Country</option> -->
+                </select>
+            </div>
+        </div>
+        <div id="errMsg" class="ui error message"></div>
+    </form>
+</div>
