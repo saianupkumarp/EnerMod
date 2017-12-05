@@ -2,6 +2,7 @@ from core import models
 from datetime import datetime
 import copy
 import collections
+import settings
 
 def get_dist_username():
     query = models.db.session.query(models.FactEntitlements.USERNAME.distinct().label('USERNAME'),models.User).filter(models.FactEntitlements.USERNAME == models.User.username)
@@ -212,14 +213,14 @@ def fact_insertion(key, values, modelName, subModel, funcName, mainVerion, count
     for val in values:
         retdict.update(dict(zip(key, val)))
         #Insert new records with Last Start Date
-        factIns = models.FactEntitlements(CNTRY_ID=country,UNIT=retdict.get('Unit of Measure'),YEAR_ID=retdict.get('Year'),SEA_ID=retdict.get('Season'),WEEK_ID=get_week_id(retdict.get('Week')),FUEL_ID=get_fuel_id(retdict.get('Fuel Type')),LS_ID=get_ls_id(retdict.get('Load Segment')),IND_ID=get_ind_id(retdict.get('Indicator')),PLANT_ID=get_plant_id(retdict.get('Plant Type')),VALUE=retdict.get('Value'),MODEL_ID=modelName,SM_ID=subModel,FUNC_ID=funcName,MAIN_VERSION=mainVerion,USERNAME=username,LAST_EDIT_START_DATE=utcNow)
+        factIns = models.FactEntitlements(CNTRY_ID=country,UNIT=retdict.get('Unit of Measure'),YEAR_ID=retdict.get('Year'),REG_ID=get_reg_id(retdict.get('Region')),SEA_ID=retdict.get('Season'),WEEK_ID=get_week_id(retdict.get('Week')),FUEL_ID=get_fuel_id(retdict.get('Fuel Type')),LS_ID=get_ls_id(retdict.get('Load Segment')),IND_ID=get_ind_id(retdict.get('Indicator')),PLANT_ID=get_plant_id(retdict.get('Plant Type')),VALUE=retdict.get('Value'),MODEL_ID=modelName,SM_ID=subModel,FUNC_ID=funcName,MAIN_VERSION=mainVerion,USERNAME=username,LAST_EDIT_START_DATE=utcNow)
         models.db.session.add(factIns)
         models.db.session.commit()
     return "success"
 
 def facts_insert_initial_data(username):
     utcNow = datetime.utcnow()
-    initial_data = models.GetFacts.dump(models.FactEntitlements.query.filter(models.FactEntitlements.USERNAME=='SYSADMIN', models.FactEntitlements.MAIN_VERSION=='0').all())
+    initial_data = models.GetFacts.dump(models.FactEntitlements.query.filter(models.FactEntitlements.USERNAME==settings.DEFAULT_USERNAME, models.FactEntitlements.MAIN_VERSION=='0').all())
     for item in initial_data.data:
         factIns = models.FactEntitlements(CNTRY_ID=item.get('CNTRY_ID'),UNIT=item.get('UNIT'),YEAR_ID=item.get('YEAR_ID'),SEA_ID=item.get('SEA_ID'),WEEK_ID=item.get('WEEK_ID'),FUEL_ID=item.get('FUEL_ID'),LS_ID=item.get('LS_ID'),REG_ID=item.get('REG_ID'),IND_ID=item.get('IND_ID'),PLANT_ID=item.get('PLANT_ID'),VALUE=item.get('VALUE'),MODEL_ID=item.get('MODEL_ID'),SM_ID=item.get('SM_ID'),FUNC_ID=item.get('FUNC_ID'),MAIN_VERSION='1',USERNAME=username,LAST_EDIT_START_DATE=utcNow,INITIAL_LOAD_START_DATE=utcNow,LAST_EDIT_END_DATE=None,INITIAL_LOAD_END_DATE=None,SUB_VERSION=None)
         models.db.session.add(factIns)

@@ -140,12 +140,6 @@ $(function() {
                             $('#loading').hide();
                             console.log(error);
                     });
-                    
-                    // setTimeout(function(){
-                    //     $('#loading').hide();
-                    //     tabChange(tab_proceed_status=true, parseInt(num) + 2);
-                    // }, 9000);
-                    // return;
                 }
               }).modal('show');
         }
